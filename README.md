@@ -1,5 +1,6 @@
 
 ## Web structure:
+```
 Amazing
 ├──  Login Page
 │    ├── sign up
@@ -34,3 +35,4 @@ Amazing
 │
 │ 
 └── 
+```
