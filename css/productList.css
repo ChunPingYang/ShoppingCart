@@ -1,0 +1,43 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,1fr);
+    grid-gap:1em;
+    padding:1rem;
+    height:100%;
+    width:100%;
+    border:1px solid black;
+    grid-area: content;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+article > div{
+    border-radius: 5px;
+    border:1px solid blue; 
+}
+
+.addCart {
+    border: 2px solid #2196F3;
+    background-color: white;
+    color: dodgerblue;
+    padding: 14px 28px;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.addCart:hover{
+    background: #2196F3;
+    color: white;
+}
+
+.column {
+    display: grid;
+    width:70%;
+    float:right;
+    height:25%;
+    border:1px solid red;
+}

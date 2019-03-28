@@ -5,65 +5,74 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
-/*my new css*/
-.header{
+/*Jason new css//////////////////////////////////////////////////////*/
+
+.container1st {
+    display: grid;
+  
+    grid-template-areas:
+      "header header"
+      "nav content";
+  
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 10px;
+  
+    height: 100vh;
+  }
+
+/*header*/
+header{
+    grid-area: header;
     height:10%;
 }
-
-.below{
-    width:100%;
-    height:90%;
-    border:1px solid red;
-}
+/*header*/
 
 /* side nav*/
-.sidenav {
-	margin-top: 5em;
-	position: fixed;
-	z-index: 1;
-	top: 20px;
-	left: 10px;
-	background: #eee;
-	overflow-x: hidden;
-	padding: 8px 0;
-	width:16%;
+nav.nav_container{
+    display: grid;
 }
 
-.sidenav a {
-	padding: 6px 8px 6px 16px;
+nav.nav_container {
+    border: 2px solid #f76707;
+    border-radius: 5px;
+    background-color: #fff4e6;
+}
+
+nav.nav_container > div {
+border: 2px solid #ffa94d;
+border-radius: 5px;
+background-color: #ffd8a8;
+padding: 1em;
+color: #190eac;
+}
+  
+nav.nav_container a{
+    padding: 6px 8px 6px 16px;
 	text-decoration: none;
 	font-size: 25px;
 	color: #2196F3;
 	display: block;
 }
 
-.sidenav a:hover {
-	color: #064579;
+nav.nav_container a:hover{
+    color: #064579;
 }
-
-.main {
-	font-size: 28px; /* Increased text to enable scrolling */
-	padding: 0px 10px;
-	border:1px solid black;
-	width:82%;
-	height:100%;
-	float: right;
-}
+/* side nav*/
 
 @media screen and (max-height: 450px) {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
 }
 
-/*my new css*/
+/*Jason new css//////////////////////////////////////////////////////*/
 
 body{
 	margin:0;
 	padding:0;
 	background:#fff;
     font-family: 'Noto Sans', sans-serif;
-    height:50em;
- }
+ } 
 body a{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
