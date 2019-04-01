@@ -14,15 +14,18 @@
 <script src="./js/jquery-1.11.1.min.js"></script> <!--no change-->
 <script src="./js/bootstrap.js"></script> <!--no change-->
 <!-- //js -->
-<!-- //for-mobile-apps -->
-<link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href="./css/style.css" rel='stylesheet' type='text/css' />
 
 <link href="./css/font-awesome.css" rel="stylesheet">
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- //for-mobile-apps -->
+<link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="./css/style.css" rel='stylesheet' type='text/css' />
+
+
 
 </head>
 
@@ -32,7 +35,7 @@
 
 <header class="header">
 
-		<div class="container">
+		<div class="container" style="width:100%;">
 
 				<div class="nav-top">
 					<nav class="navbar navbar-default">
@@ -176,10 +179,9 @@
 						</ul>
 					</div>
 					</nav>
-					 <div class="cart" >
-						<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
+					<div class="cart" >
+						<a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
 					</div>
-					<div class="clearfix"></div>
 				</div>
 
 		</div>
