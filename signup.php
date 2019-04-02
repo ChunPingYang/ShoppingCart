@@ -18,26 +18,27 @@
   		return $data;
 		}
 
-		//if(!$username){
-			//$nameErr = "username cannot be empty!";
-			//$_SESSION["nameErr"] = $nameErr;
-			//header('Location:regipage.php');
-		//}
+		/*if(!isset($_POST["regi_username"])){
+			header('Location:regipage.php');
+			exit();
+		}*/
 
-		//if($password1 == $password2){
-		//	$password = $password1;
-		//	$query = "insert into user(username, password, email) values ('$username','$password','$email')";
-		//	$result = mysqli_query($con,$query);
-		//}
+		if($password1 != $password2){
+			header('Location:regipage.html');
+		}
 		//else{
 
 		//}
+
+
 	
 		$query = "insert into users(username, password, email) values ('$username','$password1','$email')";
 		$result = mysqli_query($con,$query);
 		if($result){
-		echo "<p>insert success'<p>";
+		//echo "<p>insert success'<p>";
+			header('Location:regipage.html');
 		}
+
 
 		mysqli_close($con);
 		

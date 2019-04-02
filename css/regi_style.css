@@ -61,6 +61,10 @@ input[type=submit]:hover {
   clear: both;
 }
 
+#description{
+  text-align:left;
+}
+
 /* vertical line */
 .vl {
   position: absolute;
