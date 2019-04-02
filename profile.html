@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +18,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <script src="js/jquery-1.11.1.min.js"></script>
    <script src="js/bootstrap.js"></script>
 <!-- //js -->
-
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 <link href="css/font-awesome.css" rel="stylesheet"> 
-<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+<style>
+	
+        .profile{
+			font-size: 10px;
+           padding: 0px 10px;
+           border: 1px solid black;
+           width: 82%;
+            height: 100%;
+           float: right;
+		}
+		.title{		
+         padding: 22px 15px 15px 15px;
+          margin-bottom: 0;
+		}
+        .desc{
+		    clear:left;
+			float:left;
+			margin:10px 10px 10px 13px;
+		}
+		.info{
+			
+			float:right;
+			margin:10px 10px  10px 10px;
+			border: 1px solid #ddd !important;
+    color: #333 !important;
+		}
+		.detail{
+			border: 1px solid #ddd;
 
-
+    margin-bottom: 15px;
+   
+         color:black;
+		}
+		.normal
+		{
+			
+			float:right;
+			margin:10px 10px  10px 10px;
+			border: 1px solid #ddd !important;
+    color: #333 !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+		}
+		.change
+		{
+			vertical-align: baseline!important;
+    	display: inline-block!important;
+    	padding: 0 10px!important;
+    	margin:40px 40px 20px 50px;
+    	
+    	top: 0!important;
+		}
+       .cancel{
+		vertical-align: baseline!important;
+    display: inline-block!important;
+    width: auto!important;
+    font-size: 13px!important;
+    
+	margin:40px 40px 20px 50px;
+	float:right;
+}
+</style>
 
 </head>
 <body>
@@ -185,83 +238,84 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 					
-		</div>			
-	</header>
-	
-	<div class="below">
-		<div class="sidenav">
-			<a href="#about">About</a>
-			<a href="#services">Services</a>
-			<a href="#clients">Clients</a>
-			<a href="#contact">Contact</a>
-		</div>
-	
-		<div class="main">
-<h1>Sekiro: Shadows Die Twice</h1>
-<cite>by Activision</cite>
-<style>
-	* {
-		box-sizing: border-box;
-	}
-	/* Create three unequal columns that floats next to each other */
-	.column {
-		float: left;
-		padding: 10px;
-		height: 300px;
-		/* Should be removed. Only for demonstration */
-	}
-
-	.left,.right {
-		width: 30%;
-	}
-
-	.middle {
-		width: 40%;
-	}
-	/* Clear floats after the columns */
-	.row:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-</style>
-	<div class="row">
-		<div class="column left">
-			<h2><img src="imgs/Sekiro.jpg" alt="sekiro picture"></h2>
-			<p></p>
-		</div>
-		<div class="column middle" >
-			<h2>Key Features:</h2>
-			<p>
-				<ul>
-					<li>New game</li>
-					<li>Action game</li>
-					<li>Japanese Game</li>
+		</div>		
+		
+</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3" >
+				<ul class="nav nav-pills nav-stacked">
+						<li><a href = "#profile">Profile</a></li>
+						<li><a href = "#My order">My Order</a></li>
+						<li><a href = "#Shopping cart">Shopping cart</a></li>	
 				</ul>
-			</p>
+					
+			</div>
+		    
+		    <div class="col-sm-8" style="border:1 px solid black">
+				
+					<i class="fa fa-user onlyright"style="margin-right:10px;" >
+						Profile
+					</i>
+				
+				
+					<div class="detail">
+						<div class="row">
+							<div class="col-sm-4">
+								<div class = "desc" ><label  for="username"  >Username</label></div>
+								<div class= "desc" ><label for ="email"> Email</label></div>
+								<div class= "desc" ><label for ="phone">Phone number</label></div>
+								<div class= "desc" >
+										<label  for ="first name">First name</label>
+									</div>
+									<div class= "desc" >
+											<label  for ="last name">Last name</label>
+										</div>
+								<div class= "desc" ><label  for ="address">Address:</label></div>
+								
+							</div>
+							<div class="col-sm-8" >
+								 <input class="info" style="width:80% "  type="text" name="username" placeholder="username">
+								 <input class="info" style="width:80% " type="text" name="email" placeholder="email">
+								 <input class="info" style="width:80% " type="text" name="phone" placeholder="phone">
+								 <input class="info" style="width:80% " type="text" name="first name" placeholder="first name">
+								 <input class="info" style="width:80% " type="text" name="last name" placeholder="last name">
+								 <textarea class="normal"style="width:80% ;height:100px " type="text" name ="address" ></textarea>
+								
+						</div>
+						<div class="row">
+								<div class="col-sm-4">
+								<input type="submit" value="Confirm" class="change" >
+								</div>
+								<div class="col-sm-8">
+									<input type="button" value="Cancel" class="cancel">
+								</div>
+						</div>
+						</div>
+						</div>
+					
+						
+					</div>
+				
+				
+	
+			</div>
 			
+
+
+
+
 		</div>
-		<div class="column right">
-			<h2>Price: $60</h2>
-			<p><img src="imgs/buy-now-flashing.gif" alt="buy now" width="200"></p>
-		</div> 
+		
 	</div>
-<h2>Product details</h2>
-<p style="font-size: 20px">Winner of "Best of gamescom" and "Best Action Game" at gamescom 2018, Sekiro: Shadows Die
-	Twice is the next
-	adventure from developer From Software, creators of Bloodborne and the Dark Souls series. Carve your own clever path
-	to vengeance in this all-new action-adventure title.
 
-	In Sekiro: Shadows Die Twice you are the "one-armed wolf", a disgraced and disfigured warrior rescued from the brink
-	of death. Bound to protect a young lord who is the descendant of an ancient bloodline, you become the target of many
-	vicious enemies, including the dangerous Ashina clan. When the young lord is captured, nothing will stop you on a
-	perilous quest to regain your honor, not even death itself.
+	
+		
+        
+	
 
-	Explore late 1500s Sengoku Japan, a brutal period of constant life and death conflict, as you come face to face with
-	larger than life foes in a dark and twisted world. Unleash an arsenal of deadly prosthetic tools and powerful ninja
-	abilities while you blend stealth, vertical traversal, and visceral head to head combat in a bloody confrontation.
 
-	Take Revenge. Restore your honor. Kill Ingeniously.</p>
+
 
 </body>
-</html>
+      
