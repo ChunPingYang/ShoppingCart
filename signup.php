@@ -33,7 +33,7 @@
 
 		//}
 	
-		$query = "insert into user(username, password, email) values ('$username','$password1','$email')";
+		$query = "insert into users(username, password, email) values ('$username','$password1','$email')";
 		$result = mysqli_query($con,$query);
 		if($result){
 		echo "<p>insert success'<p>";
