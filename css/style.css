@@ -26,6 +26,14 @@ header{
     grid-area: header;
     height:10%;
 }
+
+.cart{
+	float: right; 
+	cursor: pointer;
+	margin-top: 11px;
+    width:200px;
+}
+
 /*header*/
 
 /* side nav*/
@@ -419,12 +427,7 @@ nav.navbar.navbar-default {
     float: left;
     height: 44px;
 }
-.cart{
-	float: right; 
-	cursor: pointer;
-	margin-top: 11px;
-    width: 9%;
-}
+
 
 
 
@@ -2992,10 +2995,11 @@ img.img-head {
 .offer {
     right: -8px;
 }
-.container {
+ .container {
     padding-right: 5px;
     padding-left: 5px;
 }
+
 .product {
     padding: 3em 0 0em;
 }
