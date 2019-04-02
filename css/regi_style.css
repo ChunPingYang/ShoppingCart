@@ -61,6 +61,10 @@ input[type=submit]:hover {
   clear: both;
 }
 
+#description{
+  text-align:left;
+}
+
 /* vertical line */
 .vl {
   position: absolute;
@@ -108,4 +112,23 @@ input[type=submit]:hover {
     display: block;
     text-align: center;
   }
+}
+
+.ok, .info, .error {
+  padding: 0px 2px;
+}
+
+.ok {
+  background: #cfc;
+  border: 2px solid #9c9;
+}
+
+.info {
+  background: #ffc;
+  border: 2px solid #cc9;
+}
+
+.error {
+  background: #fcc;
+  border: 2px solid #c99;
 }

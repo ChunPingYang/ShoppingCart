@@ -135,3 +135,4 @@ INSERT INTO product (cid, pname, price, n_sold, n_instock, image, release_date, 
 VALUES (102, 'Draw Rider 2',10.99,3,97,'imgs/samsung.jpg','October 05, 2019',
 'Draw Rider is back! Meet the long awaited continuation of the legendary hardcore racing'
 ,'admin');
+
