@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping Cart</title>
+
+  <link rel="stylesheet" href="css/shoppingCart.css" media="screen" title="no title" charset="utf-8">
+  <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/shoppingCart.js"></script>
+  <meta name="robots" content="noindex,follow" />
+</head>
+
+<body>
+  <div class="shopping-cart">
+    <!-- Title -->
+    <div class="title">
+      Shopping Bag
+    </div>
+
+    <!-- Product #1 -->
+    <div class="item">
+      <div class="buttons">
+        <span class="delete-btn"></span>
+        <span class="like-btn"></span>
+      </div>
+
+      <div class="image">
+        <img src="imgs/Sekiro.jpg" alt="" />
+      </div>
+
+      <div class="description">
+        <span>Sekiro</span>
+        <span>New release</span>
+        <span>Action</span>
+      </div>
+
+      <div class="quantity">
+        <button class="plus-btn" type="button" name="button">
+          <img src="plus.svg" alt="" />
+        </button>
+        <input type="text" name="name" value="1">
+        <button class="minus-btn" type="button" name="button">
+          <img src="minus.svg" alt="" />
+        </button>
+      </div>
+
+      <div class="total-price">$549</div>
+    </div>
+
+    <!-- Product #2 -->
+    <div class="item">
+      <div class="buttons">
+        <span class="delete-btn"></span>
+        <span class="like-btn"></span>
+      </div>
+
+      <div class="image">
+        <img src="imgs/Dark_souls_3.jpg" alt="" />
+      </div>
+
+      <div class="description">
+        <span>Dark Soul III</span>
+        <span>Classic</span>
+        <span>Torture</span>
+      </div>
+
+      <div class="quantity">
+        <button class="plus-btn" type="button" name="button">
+          <img src="plus.svg" alt="" />
+        </button>
+        <input type="text" name="name" value="1">
+        <button class="minus-btn" type="button" name="button">
+          <img src="minus.svg" alt="" />
+        </button>
+      </div>
+
+      <div class="total-price">$870</div>
+    </div>
+
+    <!-- Product #3 -->
+    <div class="item">
+      <div class="buttons">
+        <span class="delete-btn"></span>
+        <span class="like-btn"></span>
+      </div>
+
+      <div class="image">
+        <img src="imgs/Nioh.jpg" alt="" />
+      </div>
+
+      <div class="description">
+        <span>Nioh</span>
+        <span>Classic</span>
+        <span>Action</span>
+      </div>
+
+      <div class="quantity">
+        <button class="plus-btn" type="button" name="button">
+          <img src="plus.svg" alt="" />
+        </button>
+        <input type="text" name="name" value="1">
+        <button class="minus-btn" type="button" name="button">
+          <img src="minus.svg" alt="" />
+        </button>
+      </div>
+
+      <div class="total-price">$349</div>
+    </div>
+
+    <!-- Total  -->
+    <div class="item">
+      <div class="buttons" style="visibility:hidden">
+        <span class="delete-btn"></span>
+        <span class="like-btn"></span>
+      </div>
+
+      <div class="image" style="visibility:hidden">
+        <img src="imgs/Nioh.jpg" alt="" />
+      </div>
+
+      <div class="description" id='total'>
+        <span style="font-size: 15px;">Total</span>
+        <span>$1000</span>
+      </div>
+      <div class="image">
+        <img src="imgs/confirm-shopping.png" alt="">
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
