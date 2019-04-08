@@ -19,17 +19,17 @@ article > div{
     border:1px solid blue; 
 }
 
-.addCart {
+.column > button {
     border: 2px solid #2196F3;
     background-color: white;
     color: dodgerblue;
     padding: 14px 28px;
     font-size: 2em;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
-.addCart:hover{
+.column > button:hover{
     background: #2196F3;
     color: white;
 }
@@ -39,5 +39,14 @@ article > div{
     width:70%;
     float:right;
     height:25%;
-    border:1px solid red;
+    padding-right: 1em;
 }
+
+.productDes{
+    padding:35px;
+}
+
+.productDes > p{
+    word-break: break-all;
+}
+
