@@ -77,6 +77,12 @@ ALTER TABLE cart
   ADD FOREIGN KEY (pid) REFERENCES product(itemid),
   ADD FOREIGN KEY (userid) REFERENCES users(userid);
 
+/* add more attributes */
+ALTER TABLE users
+  ADD address varchar(255),
+  ADD state varchar(255),
+  ADD city varchar(255),
+  ADD zip int(20);
 
 /*Insert Data*/
 /*Category*/
