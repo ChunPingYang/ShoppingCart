@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function() { 
 
-	// your js code goes here...
+	var flag = 0;
 	$("#username").focus(function(){
 		$("#nj").remove();
 		$("<span id ='info' class = 'info'>Contain only alphabetical or numeric characters</span>").insertAfter("#username");
@@ -40,7 +40,7 @@ $(document).ready(function() {
         }
         else{
 			$("<span id = 'nj' class='error'>Error</span>").insertAfter("#username");
-			event.preventDefault();
+			flag = 1;
         }
 
 	});
@@ -60,7 +60,7 @@ $(document).ready(function() {
         }
         else{
 			$("<span id = 'ej' class='error'>Error</span>").insertAfter("#email");
-			event.preventDefault();
+			flag = 1;
         }
 	});
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
         }
         else{
 			$("<span id = 'pj1' class='error'>Error</span>").insertAfter("#password1");
-			event.preventDefault();
+			flag = 1;
         }
 
 
@@ -96,10 +96,15 @@ $(document).ready(function() {
         }
         else{
         	$("<span id = 'pj2' class='error'>Two input password must be consistent</span>").insertAfter("#password2");
-			event.preventDefault();
+			flag = 1;
 		}
 
 	});
 
+	$("#signup").click(function(event){ 
+		if(flag==1){
+			event.preventDefault();
+		}
+	});
 
 });

@@ -33,6 +33,7 @@
         <input type="password" id="password1" name="regi_password1" placeholder="Password">
         <input type="password" id="password2" name="regi_password2" placeholder="Confirm Password">
         <input type="submit" value="Sign up" id = "signup" name="signup">
+        
       </div>
   </form>
 
