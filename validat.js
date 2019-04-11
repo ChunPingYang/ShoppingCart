@@ -32,11 +32,13 @@ $(document).ready(function() {
 		var digits_alphs =/^[a-zA-Z0-9]+$/;
 		
 		if(!name){
+			flag = 1;
 			$("<span></span>").insertAfter("#username");
         }
 
 		else if(digits_alphs.test(name)){
-        	$("<span id = 'nj' class='ok'>OK</span>").insertAfter("#username");
+			$("<span id = 'nj' class='ok'>OK</span>").insertAfter("#username");
+			flag = 0;
         }
         else{
 			$("<span id = 'nj' class='error'>Error</span>").insertAfter("#username");
@@ -52,11 +54,12 @@ $(document).ready(function() {
 	    var is_email = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])/;
 
 		if(!email){
-			
+			flag = 1;	
         }
 
         else if(is_email.test(email)){
-        	$("<span id = 'ej' class='ok'>OK</span>").insertAfter("#email");
+			$("<span id = 'ej' class='ok'>OK</span>").insertAfter("#email");
+			flag = 0;
         }
         else{
 			$("<span id = 'ej' class='error'>Error</span>").insertAfter("#email");
@@ -70,10 +73,12 @@ $(document).ready(function() {
 	    var password = $("#password1").val();
 
 		if(!password){
+			flag = 1;
 			$("<span></span>").insertAfter("#password1");
         }
         else if(password.length>7){
-        	$("<span id = 'pj1' class='ok'>OK</span>").insertAfter("#password1");
+			$("<span id = 'pj1' class='ok'>OK</span>").insertAfter("#password1");
+			flag = 0;
         }
         else{
 			$("<span id = 'pj1' class='error'>Error</span>").insertAfter("#password1");
@@ -89,10 +94,12 @@ $(document).ready(function() {
 	    var password2 = $("#password2").val();
 
 		if(!password2){
+			flag = 1;
 			
         }
         else if(password1==password2){
-        	$("<span id = 'pj2' class='ok'>OK</span>").insertAfter("#password2");
+			$("<span id = 'pj2' class='ok'>OK</span>").insertAfter("#password2");
+			flag = 0;
         }
         else{
         	$("<span id = 'pj2' class='error'>Two input password must be consistent</span>").insertAfter("#password2");

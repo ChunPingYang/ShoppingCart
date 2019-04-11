@@ -5,11 +5,7 @@
 	$con = mysqli_connect("localhost","root","","amz") or die(mysql_error());
 	
 	$email = $username = $password = "";
-/*
-	if(!isset($_POST["signup"])){
-		header('Location:regipage.php');
-	}
-	*/
+
 
 		$email = test_input($_POST["email"]);
  		$username = test_input($_POST["regi_username"]);
