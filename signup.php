@@ -1,4 +1,5 @@
 <?php
+
 	session_start();
 
 	$con = mysqli_connect("localhost","root","","amz") or die(mysql_error());
@@ -18,26 +19,27 @@
   		return $data;
 		}
 
-		/*if(!isset($_POST["regi_username"])){
-			header('Location:regipage.php');
-			exit();
-		}*/
-
 		if($password1 != $password2){
 			header('Location:regipage.html');
 		}
-		//else{
 
-		//}
+		$check_email = mysqli_query($con,"select * from users where email = '$email';");
+		if(mysqli_num_rows($check_email)>1){
+			header('Location: login.html');
+			exit();
+	  }
 
-
-	
-		$query = "insert into users(username, password, email) values ('$username','$password1','$email')";
+		$userpass = password_hash($_POST['regi_password1'], PASSWORD_BCRYPT);
+		$query = "insert into users(username, password, email) values ('$username','$userpass','$email')";
 		$result = mysqli_query($con,$query);
+
 		if($result){
-		//echo "<p>insert success'<p>";
 			header('Location:regipage.html');
 		}
+		else{
+			die('Error: ' . mysqli_error($con));
+		}
+		
 
 
 		mysqli_close($con);

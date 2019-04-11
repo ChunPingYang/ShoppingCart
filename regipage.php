@@ -1,3 +1,7 @@
+<?php
+	$con = mysqli_connect("localhost","root","","amz") or die(mysql_error());
+	$email = $username = $password = "";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,15 +36,46 @@
       </div>
   </form>
 
-  <form method="post" action="login.php">
+  <form method="post">
       <div class="col">
         <div class="hide-md-lg">
           <p>Sign in:</p>
         </div>
 
         <input type="text" name="username" placeholder="Username">
+        <?php
+        if(isset($_POST["username"]) && !empty($_POST["username"])){
+            $username = mysqli_real_escape_string($con, $_POST["username"]);
+            $query = "select username, password FROM users WHERE username = '$username';";
+            $result = mysqli_query($con,$query);
+          
+            if(mysqli_num_rows($result)<1){// User not found. So, redirect to login_form again.
+                echo "<span  class='error'>Please register first!</span>";
+            }
+        }  		
+        ?>
         <input type="password" name="password" placeholder="Password">
+        <?php
+        		while($userData = mysqli_fetch_array($result)){
+              if(password_verify($_POST["password"], $userData['password'])){
+              //mysqli_close($con);
+              $_SESSION["userid"] = $userData['userid'];
+              $_SESSION["username"] = $userData['username'];
+              session_write_close();
+            }
+              else{
+              //mysqli_close($con);
+              echo "<span  class='error'>Password is wrong!</span>"; 
+              session_write_close();
+            }
+          
+            }
+        ?>
         <input type="submit" value="Login" name="login">
+        <?php
+            //!!!!!!link to homepage
+            header('Location:welcome.php');
+        ?>
       </div>
       
     </div>
