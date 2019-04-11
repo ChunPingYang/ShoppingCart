@@ -20,12 +20,12 @@
 		}
 
 		if($password1 != $password2){
-			header('Location:regipage.html');
+			//header('Location:regipage.php');
 		}
 
 		$check_email = mysqli_query($con,"select * from users where email = '$email';");
 		if(mysqli_num_rows($check_email)>1){
-			header('Location: login.html');
+			header('Location: regipage.php');
 			exit();
 	  }
 
@@ -34,14 +34,13 @@
 		$result = mysqli_query($con,$query);
 
 		if($result){
-			header('Location:regipage.html');
+			echo "<html>alert('Success')</html>";
+			header('Location:regipage.php');
 		}
 		else{
 			die('Error: ' . mysqli_error($con));
 		}
 		
-
-
 		mysqli_close($con);
 		
 ?>

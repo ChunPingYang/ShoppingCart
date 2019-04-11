@@ -46,7 +46,7 @@
         <?php
         if(isset($_POST["username"]) && !empty($_POST["username"])){
             $username = mysqli_real_escape_string($con, $_POST["username"]);
-            $query = "select username, password FROM users WHERE username = '$username';";
+            $query = "select userid, username, password FROM users WHERE username = '$username';";
             $result = mysqli_query($con,$query);
           
             if(mysqli_num_rows($result)<1){// User not found. So, redirect to login_form again.
@@ -56,12 +56,15 @@
         ?>
         <input type="password" name="password" placeholder="Password">
         <?php
+        if(isset($_POST["password"]) && !empty($_POST["password"])){
         		while($userData = mysqli_fetch_array($result)){
               if(password_verify($_POST["password"], $userData['password'])){
               //mysqli_close($con);
               $_SESSION["userid"] = $userData['userid'];
               $_SESSION["username"] = $userData['username'];
-              session_write_close();
+              
+              echo "<span class = 'ok'>Login success</span>";//header('Location:regipage.html');
+
             }
               else{
               //mysqli_close($con);
@@ -70,12 +73,9 @@
             }
           
             }
+          }
         ?>
         <input type="submit" value="Login" name="login">
-        <?php
-            //!!!!!!link to homepage
-            header('Location:welcome.php');
-        ?>
       </div>
       
     </div>

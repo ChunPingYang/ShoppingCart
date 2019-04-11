@@ -39,8 +39,8 @@ $(document).ready(function() {
         	$("<span id = 'nj' class='ok'>OK</span>").insertAfter("#username");
         }
         else{
-        	$("<span id = 'nj' class='error'>Error</span>").insertAfter("#username");
-
+			$("<span id = 'nj' class='error'>Error</span>").insertAfter("#username");
+			event.preventDefault();
         }
 
 	});
@@ -59,7 +59,8 @@ $(document).ready(function() {
         	$("<span id = 'ej' class='ok'>OK</span>").insertAfter("#email");
         }
         else{
-        	$("<span id = 'ej' class='error'>Error</span>").insertAfter("#email");
+			$("<span id = 'ej' class='error'>Error</span>").insertAfter("#email");
+			event.preventDefault();
         }
 	});
 
@@ -75,7 +76,8 @@ $(document).ready(function() {
         	$("<span id = 'pj1' class='ok'>OK</span>").insertAfter("#password1");
         }
         else{
-        	$("<span id = 'pj1' class='error'>Error</span>").insertAfter("#password1");
+			$("<span id = 'pj1' class='error'>Error</span>").insertAfter("#password1");
+			event.preventDefault();
         }
 
 
@@ -94,7 +96,8 @@ $(document).ready(function() {
         }
         else{
         	$("<span id = 'pj2' class='error'>Two input password must be consistent</span>").insertAfter("#password2");
-        }
+			event.preventDefault();
+		}
 
 	});
 
