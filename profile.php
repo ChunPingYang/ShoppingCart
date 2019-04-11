@@ -1,7 +1,7 @@
 <?php 
                                 session_start();
                                     $con=mysqli_connect("localhost","root","","amz");
-                                    $_SESSION['userid']='1000';   //predefine for test;
+                                    //$_SESSION['userid']='1000';   //predefine for test;
                                     $userid = $_SESSION['userid'];
                                     
                                     $sql = "SELECT * from users where userid='$userid'";
