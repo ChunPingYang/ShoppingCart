@@ -33,7 +33,7 @@
         <input type="password" id="password1" name="regi_password1" placeholder="Password">
         <input type="password" id="password2" name="regi_password2" placeholder="Confirm Password">
         <input type="submit" value="Sign up" id = "signup" name="signup">
-        
+
       </div>
   </form>
 
@@ -61,16 +61,16 @@
         		while($userData = mysqli_fetch_array($result)){
               if(password_verify($_POST["password"], $userData['password'])){
               //mysqli_close($con);
-              $_SESSION["userid"] = $userData['userid'];
-              $_SESSION["username"] = $userData['username'];
+              $_SESSION['userid'] = $userData['userid'];
+              $_SESSION['username'] = $userData['username'];
               
-              echo "<span class = 'ok'>Login success</span>";//header('Location:regipage.html');
-
+              echo "<span class = 'ok'>Login success</span>";
+              header('Location:profile.php');
             }
               else{
               //mysqli_close($con);
               echo "<span  class='error'>Password is wrong!</span>"; 
-              session_write_close();
+              //session_write_close();
             }
           
             }
