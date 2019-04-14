@@ -12,12 +12,28 @@
 	$page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
 	$links      = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
 
+$results = "";	
+if(isset($_POST['search'])){
+
+	$keyword = trim($_POST['search']);
+
+	$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price ASC";
+	if($option == 2){
+		$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY PRICE DESC";
+	}
+	$Paginator = new Paginator($con,$sql);
+	$results    = $Paginator->getData( $limit, $page );
+
+}else{
+
 	$sql = "SELECT * FROM product ORDER BY price ASC";
 	if($option == 2){
 		$sql = "SELECT * FROM product ORDER BY PRICE DESC";
 	}
 	$Paginator = new Paginator($con,$sql);
 	$results    = $Paginator->getData( $limit, $page );
+
+}
 
 ?>
 
