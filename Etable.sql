@@ -25,7 +25,7 @@ CREATE TABLE product
   `image` varchar(255) NOT NULL,
   `company` varchar(30) NOT NULL,
   `rating` varchar(5) NOT NULL,
-  `catagory` varchar(30) NOT NULL,
+  category varchar(30) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `screenshots1` varchar(255) NOT NULL,
   `screenshots2` varchar(255) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE product
 CREATE TABLE catagory
 (
 cid int NOT NULL AUTO_INCREMENT,
-cname varchar(255),
+cname varchar(30) NOT NULL,
 description varchar(255),
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -77,21 +77,16 @@ ALTER TABLE orders
   MODIFY orderid int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7000;
 
 
-ALTER TABLE product
-  ADD FOREIGN KEY (catagory) REFERENCES catagory(cname);
+
 ALTER TABLE orders
   ADD FOREIGN KEY (itemid) REFERENCES product(itemid),
   ADD FOREIGN KEY (userid) REFERENCES users(userid);
 ALTER TABLE cart
   ADD FOREIGN KEY (pid) REFERENCES product(itemid),
   ADD FOREIGN KEY (userid) REFERENCES users(userid);
+ALTER TABLE product
+  ADD FOREIGN KEY (category) REFERENCES catagory(cname);
 
-/* add more attributes */
-ALTER TABLE users
-  ADD address varchar(255),
-  ADD state varchar(255),
-  ADD city varchar(255),
-  ADD zip int(20);
 
 /*Insert Data*/
 /*Category*/
