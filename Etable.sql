@@ -9,7 +9,7 @@ address varchar(255),
 state varchar(255),
 city varchar(255),
 zip int(20),
-admin bool DEFAULT FALSE,
+admin boolean DEFAULT FALSE,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (userid)
