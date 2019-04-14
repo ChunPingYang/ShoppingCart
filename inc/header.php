@@ -182,6 +182,11 @@
 					<div class="cart" >
 						<a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
 					</div>
+					<form align = "center" action="" method="POST">
+						<font size = "5">Search:</font>
+						<input type = "text" value = "" name="search"/>
+						<input type = "submit" value = "submit"/>
+					</form>
 				</div>
 
 		</div>
