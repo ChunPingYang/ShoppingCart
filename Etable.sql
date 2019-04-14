@@ -1,10 +1,15 @@
-CREATE TABLE users
+﻿CREATE TABLE users
 (
 userid int NOT NULL AUTO_INCREMENT,
 username varchar(255) NOT NULL,
 password varchar(255),
 email varchar(255),
 mobile int(20),
+address varchar(255),
+state varchar(255),
+city varchar(255),
+zip int(20),
+admin bool DEFAULT FALSE,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (userid)
@@ -12,18 +17,22 @@ PRIMARY KEY (userid)
 
 CREATE TABLE product
 (
-itemid int NOT NULL AUTO_INCREMENT,
-cid int,
-pname varchar(255),
-price double,
-n_sold int,
-n_instock int,
-release_date varchar(25),
-image varchar(255),
-description varchar(255),
-last_update_username varchar(255),
-last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-PRIMARY KEY (itemid)
+  itemid int NOT NULL AUTO_INCREMENT,
+  `pname` varchar(255) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `price` float NOT NULL,
+  `release date` date NOT NULL,
+  `href` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `company` varchar(30) NOT NULL,
+  `rating` varchar(5) NOT NULL,
+  `catagory` varchar(30) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `screenshots1` varchar(255) NOT NULL,
+  `screenshots2` varchar(255) NOT NULL,
+  `screenshots3` varchar(255) NOT NULL,
+   last_update_username varchar(255),
+   last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY (itemid)
 );
 
 CREATE TABLE catagory
@@ -42,7 +51,7 @@ orderid int NOT NULL AUTO_INCREMENT,
 itemid int,
 userid int,
 n_purchased int,
-totalprice double,
+totalprice float,
 orderdate datetime DEFAULT CURRENT_TIMESTAMP,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -54,10 +63,10 @@ CREATE TABLE cart
 userid int NOT NULL,
 pid int,
 quantity int(255),
-totalprice double,
+totalprice float,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-PRIMARY KEY (userid)
+PRIMARY KEY (userid, pid)
 );
 
 ALTER TABLE users
@@ -69,7 +78,7 @@ ALTER TABLE orders
 
 
 ALTER TABLE product
-  ADD FOREIGN KEY (cid) REFERENCES catagory(cid);
+  ADD FOREIGN KEY (catagory) REFERENCES catagory(cname);
 ALTER TABLE orders
   ADD FOREIGN KEY (itemid) REFERENCES product(itemid),
   ADD FOREIGN KEY (userid) REFERENCES users(userid);
@@ -141,4 +150,6 @@ INSERT INTO product (cid, pname, price, n_sold, n_instock, image, release_date, 
 VALUES (102, 'Draw Rider 2',10.99,3,97,'imgs/samsung.jpg','October 05, 2019',
 'Draw Rider is back! Meet the long awaited continuation of the legendary hardcore racing'
 ,'admin');
+
+
 
