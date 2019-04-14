@@ -24,31 +24,13 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- 表的结构 `product_test`
---
 
-CREATE TABLE `product_test` (
-  `Game_name` varchar(255) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `price` float NOT NULL,
-  `release date` date NOT NULL,
-  `href` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `company` varchar(30) NOT NULL,
-  `rating` varchar(5) NOT NULL,
-  `catagory` varchar(30) NOT NULL,
-  `description` varchar(1000) NOT NULL,
-  `screenshots1` varchar(255) NOT NULL,
-  `screenshots2` varchar(255) NOT NULL,
-  `screenshots3` varchar(255) NOT NULL,
-  `pid` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `product_test`
+-- 转存表中的数据 `product`
 --
 
-INSERT INTO `product_test` (`Game_name`, `price`, `release date`, `href`, `image`, `company`, `rating`, `catagory`, `description`, `screenshots1`, `screenshots2`, `screenshots3`, `pid`) VALUES
+INSERT INTO `product` (`Game_name`, `price`, `release date`, `href`, `image`, `company`, `rating`, `catagory`, `description`, `screenshots1`, `screenshots2`, `screenshots3`, `pid`) VALUES
 ('Risk of Rain 2', 19.99, '2019-03-28', 'https://store.steampowered.com/app/632360/Risk_of_Rain_2/?snr=1_7_7_globaltopsellers_150_1', 'https://steamcdn-a.akamaihd.net/steam/apps/632360/header.jpg?t=1553972427', 'Hopoo Games', '97%', 'Early Access', 'The classic multiplayer roguelike, Risk of Rain, returns with an extra dimension and more challenging action. No run will ever be the same with randomized stages, enemies, bosses, and items. Play solo, or team up with up to four friends to fight your way through hordes of monsters, unlock new loot, and find a way to escape the planet.With each run, you\'ll learn the patterns of your foes, and even the longest odds can be overcome with enough skill. A unique scaling system means both you and your foes limitlessly increase in power over the course of a game--what once was a bossfight will in time become a common enemy.Myriad survivors, items, enemies, and bosses return to Risk 2, and many new ones are joining the fight. Brand new survivors like the Artificer and MUL-T debut alongside classic survivors such as the Engineer, Huntress, and--of course--the Commando. With over 75 items to unlock and exploit, each run will keep you cleverly strategizing your way out of sticky situations.Key Fea', 'https://steamcdn-a.akamaihd.net/steam/apps/632360/ss_76082d1683ec86903a7f071181c89ccaf78b857d.1920x1080.jpg?t=1553972427', 'https://steamcdn-a.akamaihd.net/steam/apps/632360/ss_121003c290030ab310e1651a442609939141911e.1920x1080.jpg?t=1553972427', 'https://steamcdn-a.akamaihd.net/steam/apps/632360/ss_d93451e8534c512fcf15e1d8c7a02e2277807aa7.1920x1080.jpg?t=1553972427', 1),
 ('Sekiro?: Shadows Die Twice', 59.99, '2019-03-21', 'https://store.steampowered.com/app/814380/Sekiro_Shadows_Die_Twice/?snr=1_7_7_globaltopsellers_150_1', 'https://steamcdn-a.akamaihd.net/steam/apps/814380/header.jpg?t=1553906171', 'FromSoftware', '85%', 'Action', 'Winner of ??Best of gamescom?? and ??Best Action Game?? at gamescom 2018, Sekiro: Shadows Die Twice is the next adventure from developer FromSoftware, creators of Bloodborne and the Dark Souls series. Carve your own clever path to vengeance in an all-new adventure from developer FromSoftware, creators of the Dark Souls series.In Sekiro: Shadows Die Twice you are the \"one-armed wolf\", a disgraced and disfigured warrior rescued from the brink of death. Bound to protect a young lord who is the descendant of an ancient bloodline, you become the target of many vicious enemies, including the dangerous Ashina clan. When the young lord is captured, nothing will stop you on a perilous quest to regain your honor, not even death itself.Explore late 1500s Sengoku Japan, a brutal period of constant life and death conflict, as you come face to face with larger than life foes in a dark and twisted world. Unleash an arsenal of deadly prosthetic tools and powerful ninja abilities while you blend stealt', 'https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_fb360495e610e44538d38b8b792e1efdf5a730c0.1920x1080.jpg?t=1553906171', 'https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_285c1a69bda8182e5c52598d59259f1681b42e5c.1920x1080.jpg?t=1553906171', 'https://steamcdn-a.akamaihd.net/steam/apps/814380/ss_552bf9e99b3682d75c01ca4a55ba426e85f3b621.1920x1080.jpg?t=1553906171', 2),
 ('Totally Accurate Battle Simulator', 14.99, '2019-04-01', 'https://store.steampowered.com/app/508440/Totally_Accurate_Battle_Simulator/?snr=1_7_7_globaltopsellers_150_1', 'https://steamcdn-a.akamaihd.net/steam/apps/508440/header.jpg?t=1554120312', 'Landfall', '94%', 'Early Access', 'Totally Accurate Battle Simulator is a wacky physics-based tactics game. Experience accurate warfare through the ages, TABS uses state of the art physics-based simulation to provide you with never-before-seen insight to our greatest battles of history.- \"This doesn\'t look like real history at all\"- \"At least the helmets look correct\"- \"What are you doing in my office? GET OUT\"FeaturesCampaignSandbox modeA bunch of silly units', 'https://steamcdn-a.akamaihd.net/steam/apps/508440/ss_e502c3d72a454d8792fced42d241158d964af359.1920x1080.jpg?t=1554120312', 'https://steamcdn-a.akamaihd.net/steam/apps/508440/ss_030da80be50d61bfb2da4956f9755b30f97cc28a.1920x1080.jpg?t=1554120312', 'https://steamcdn-a.akamaihd.net/steam/apps/508440/ss_7002d323c3c9d6b554217c2ae610911c5f62b00e.1920x1080.jpg?t=1554120312', 3),
