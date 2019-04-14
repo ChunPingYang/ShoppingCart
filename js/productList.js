@@ -1,8 +1,8 @@
-var x, i, j, selElmnt, a, b, c;
+var x, i, j, selElmnt, a, b, c, optionVal;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
 //x = document.getElementsByName("sort");
-                                  console.log("length: "+x.length);
+                                  console.log("length .....: "+x.length);
 for (i = 0; i < x.length; i++) {
   selElmnt = x[i].getElementsByTagName("select")[0];
                                   console.log("element tag name: "+selElmnt.tagName);
@@ -61,7 +61,7 @@ for (i = 0; i < x.length; i++) {
 
         //console.log(document.getElementById("sort")); //可以取到id
         if(x[0].getAttribute("name") == "sort"){
-          console.log(this);
+          console.log("Sort .............");
             sort(this);
         }else if(x[0].getAttribute("name") == "viewPage"){
 
@@ -80,6 +80,8 @@ for (i = 0; i < x.length; i++) {
       this.classList.toggle("select-arrow-active");
     });
 }
+
+
 
 function closeAllSelect(elmnt) {
   /*a function that will close all select boxes in the document,
@@ -105,12 +107,14 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
+
+
 function sort(element){
   var i, switching, a,b, shouldSwitch, dir, switchcount = 0;
   var value = element.getAttribute("value");
-  console.log("value: "+value);
+  console.log("value option: "+value);
   switching = true;
-
+  console.log("BBBBBB");
   if(value == 0){ //TODO rate sort
 
   }else if(value == 1){ //ASC
@@ -163,10 +167,43 @@ function sort(element){
             a[i].parentNode.insertBefore(a[i+1],a[i]);
             switching = true;
         }
-    }
+      }
 
   }
+
+  console.log("AAAAAAAAAA");
+  passSortOption(value);
+  optionVal = value;
+}
+
+function passSortOption(option){
+  console.log("enter passSortOption: "+option);
+  $.ajax({
+    type: "GET",
+    data:({option:option}),
+    beforeSend: function(jqXHR,settings){
+      //$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
+      
+    },
+    success: function(data){
+      window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
+    },
+    complete: function(){
+      
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+  });
 
 }
 
 
+optionVal = '<?php echo $option?>';
+console.log("optionVal: "+optionVal);
+if(optionVal == 1){
+    var optionDiv = document.getElementsByClassName("select-items");
+    console.log(optionDiv.tagName);
+    console.log("length: "+optionDiv.length);
+}

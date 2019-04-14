@@ -1,4 +1,7 @@
 <?php
+
+echo "Option: ".$_POST['option'];
+
 $servername = 'localhost';
 $username = 'root';
 $password = '';
@@ -25,29 +28,30 @@ if($statement = mysqli_prepare($con,$sql)){
 
     while(mysqli_stmt_fetch($statement)){
 
-        echo '<article class="card">';
-		echo			'<div>';
-		echo				'<figure class="">';
-		echo					'<img  src="imgs/samsung.jpg">';
-		echo				'</figure>';
-		echo			'</div>';
-        echo			'<div class="productDes">';
-        echo                '<h2>'.$pname.'</h2>';
-        echo                '<p>'.$desc.'</p>';
-		echo			'</div>';
-		echo			'<div class="col3">';
-		echo				'<div class="column">';
+        // echo '<article class="card">';
+		// echo			'<div>';
+		// echo				'<figure class="">';
+		// echo					'<img  src="imgs/samsung.jpg">';
+		// echo				'</figure>';
+		// echo			'</div>';
+        // echo			'<div class="productDes">';
+        // echo                '<h2>'.$pname.'</h2>';
+        // echo                '<p>'.$desc.'</p>';
+		// echo			'</div>';
+		// echo			'<div class="col3">';
+		// echo				'<div class="column">';
                                
-		echo				'</div>';
-		echo				'<div class="column">';
-		echo					'<i name="price" class="fa fa-dollar" style="font-size:48px;color:red">'.$price.'</i>';
-		echo				'</div>';
-		echo				'<div class="column">';
-		echo					'<input type="text">';
-		echo					'<button type="button" class="addCart">Add to Cart</button>';
-		echo				'</div>';
-		echo			'</div>';		
-        echo '</article>';
+		// echo				'</div>';
+		// echo				'<div class="column">';
+		// echo					'<i name="price" class="fa fa-dollar" style="font-size:48px;color:red">'.$price.'</i>';
+		// echo				'</div>';
+		// echo				'<div class="column">';
+		// echo					'<input type="text">';
+		// echo					'<button type="button" class="addCart">Add to Cart</button>';
+		// echo				'</div>';
+		// echo			'</div>';		
+		// echo '</article>';
+		echo "<p>Option: ".$_POST['option']."</p>";
         
     }
 
