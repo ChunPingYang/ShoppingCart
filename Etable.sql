@@ -4,7 +4,7 @@ userid int NOT NULL AUTO_INCREMENT,
 username varchar(255) NOT NULL,
 password varchar(255),
 email varchar(255),
-mobile int(20),
+mobile varchar(20),
 address varchar(255),
 state varchar(255),
 city varchar(255),
@@ -25,21 +25,22 @@ CREATE TABLE product
   `image` varchar(255) NOT NULL,
   `company` varchar(30) NOT NULL,
   `rating` varchar(5) NOT NULL,
-  category varchar(30) NOT NULL,
+  category varchar(30),
   `description` varchar(1000) NOT NULL,
   `screenshots1` varchar(255) NOT NULL,
   `screenshots2` varchar(255) NOT NULL,
   `screenshots3` varchar(255) NOT NULL,
-   last_update_username varchar(255),
-   last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY (itemid)
+  display boolean DEFAULT TRUE,
+  last_update_username varchar(255),
+  last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (itemid)
 );
 
 CREATE TABLE catagory
 (
 cid int NOT NULL AUTO_INCREMENT,
-cname varchar(30) NOT NULL,
-description varchar(255),
+cname varchar(30),
+description varchar(255) NOT NULL,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (cid)
@@ -60,13 +61,14 @@ PRIMARY KEY (orderid)
 
 CREATE TABLE cart
 (
+rowid int NOT NULL AUTO_INCREMENT,
 userid int NOT NULL,
 pid int,
 quantity int(255),
 totalprice float,
 last_update_username varchar(255),
 last_update_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-PRIMARY KEY (userid, pid)
+PRIMARY KEY (cartid)
 );
 
 ALTER TABLE users
@@ -84,8 +86,22 @@ ALTER TABLE orders
 ALTER TABLE cart
   ADD FOREIGN KEY (pid) REFERENCES product(itemid),
   ADD FOREIGN KEY (userid) REFERENCES users(userid);
-ALTER TABLE product
-  ADD FOREIGN KEY (category) REFERENCES catagory(cname);
+
+/*ALTER TABLE product
+  ADD FOREIGN KEY (category) REFERENCES catagory(cname);*/
+
+/*After insert into product update catagory*/
+INSERT INTO catagory(cname)
+SELECT DISTINCT category
+FROM   product;
+
+
+/*trigger wrong
+CREATE TRIGGER `Addcate` AFTER INSERT ON `product`
+ FOR EACH ROW BEGIN
+       INSERT INTO catagory (cname) VALUES (NEW.category);
+   END
+   */
 
 
 /*Insert Data*/
