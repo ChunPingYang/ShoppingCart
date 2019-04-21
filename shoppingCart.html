@@ -2,134 +2,133 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopping Cart</title>
+	<title>Amazing Shopping Group</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta property="og:title" content="Vide" />
+	<meta name="keywords" content="amazing shopping" />
 
-  <link rel="stylesheet" href="css/shoppingCart.css" media="screen" title="no title" charset="utf-8">
-  <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
-  <script type="text/javascript" src="js/shoppingCart.js"></script>
-  <meta name="robots" content="noindex,follow" />
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/shoppingCart.js"></script>
+	<!-- //js -->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/shoppingCart.css" media="screen" title="no title" charset="utf-8">
+
 </head>
 
 <body>
-  <div class="shopping-cart">
-    <!-- Title -->
-    <div class="title">
-      Shopping Bag
-    </div>
 
-    <!-- Product #1 -->
-    <div class="item">
-      <div class="buttons">
-        <span class="delete-btn"></span>
-        <span class="like-btn"></span>
-      </div>
+	<!-- Loading the header -->
+	<header class="header">
+	</header>
+	<script>
+		$(function () {
+			$(".header").load("header.html");
+		});
+	</script>
+	<!-- End of header -->
 
-      <div class="image">
-        <img src="imgs/Sekiro.jpg" alt="" />
-      </div>
+	<div class="container">
 
-      <div class="description">
-        <span>Sekiro</span>
-        <span>New release</span>
-        <span>Action</span>
-      </div>
+		<!-- left nav bar -->
+		<div class="col-sm-3">
+		</div>
+		<script>
+			$(function () {
+				$(".col-sm-3").load("nav.html");
+			});
+		</script>
+		<!-- end of nav bar -->
 
-      <div class="quantity">
-        <button class="plus-btn" type="button" name="button">
-          <img src="plus.svg" alt="" />
-        </button>
-        <input type="text" name="name" value="1">
-        <button class="minus-btn" type="button" name="button">
-          <img src="minus.svg" alt="" />
-        </button>
-      </div>
 
-      <div class="total-price">$549</div>
-    </div>
+		<!-- put your content here -->
+		<div class="col-sm-8" style="border:1 px solid black">
+			<h1>Shopping Cart</h1>
 
-    <!-- Product #2 -->
-    <div class="item">
-      <div class="buttons">
-        <span class="delete-btn"></span>
-        <span class="like-btn"></span>
-      </div>
+			<div class="shopping-cart">
 
-      <div class="image">
-        <img src="imgs/Dark_souls_3.jpg" alt="" />
-      </div>
+				<div class="column-labels">
+					<label class="product-image">Image</label>
+					<label class="product-details">Product</label>
+					<label class="product-price">Price</label>
+					<label class="product-quantity">Quantity</label>
+					<label class="product-removal">Remove</label>
+					<label class="product-line-price">Total</label>
+				</div>
 
-      <div class="description">
-        <span>Dark Soul III</span>
-        <span>Classic</span>
-        <span>Torture</span>
-      </div>
+				<div class="product">
+					<div class="product-image">
+						<img src="imgs/Dark_souls_3.jpg">
+					</div>
+					<div class="product-details">
+						<div class="product-title">Dark Souls III</div>
+						<p class="product-description">
+							Best game. BUY!
+						</p>
+					</div>
+					<div class="product-price">10</div>
+					<div class="product-quantity">
+						<input type="number" value="2" min="1">
+					</div>
+					<div class="product-removal">
+						<button class="remove-product">
+							Remove
+						</button>
+					</div>
+					<div class="product-line-price">20</div>
+				</div>
 
-      <div class="quantity">
-        <button class="plus-btn" type="button" name="button">
-          <img src="plus.svg" alt="" />
-        </button>
-        <input type="text" name="name" value="1">
-        <button class="minus-btn" type="button" name="button">
-          <img src="minus.svg" alt="" />
-        </button>
-      </div>
+				<div class="product">
+					<div class="product-image">
+						<img src="imgs/Sekiro.jpg">
+					</div>
+					<div class="product-details">
+						<div class="product-title">Sekiro</div>
+						<p class="product-description">
+							New game. BUY!
+						</p>
+					</div>
+					<div class="product-price">30</div>
+					<div class="product-quantity">
+						<input type="number" value="1" min="1">
+					</div>
+					<div class="product-removal">
+						<button class="remove-product">
+							Remove
+						</button>
+					</div>
+					<div class="product-line-price">30</div>
+				</div>
 
-      <div class="total-price">$870</div>
-    </div>
+				<div class="totals">
+					<div class="totals-item">
+						<label>Subtotal</label>
+						<div class="totals-value" id="cart-subtotal">50</div>
+					</div>
+					<div class="totals-item">
+						<label>Tax (5%)</label>
+						<div class="totals-value" id="cart-tax">2.5</div>
+					</div>
+					<div class="totals-item">
+						<label>Shipping</label>
+						<div class="totals-value" id="cart-shipping">0</div>
+					</div>
+					<div class="totals-item totals-item-total">
+						<label>Grand Total</label>
+						<div class="totals-value" id="cart-total">52.5</div>
+					</div>
+				</div>
 
-    <!-- Product #3 -->
-    <div class="item">
-      <div class="buttons">
-        <span class="delete-btn"></span>
-        <span class="like-btn"></span>
-      </div>
+				<button class="checkout">Checkout</button>
 
-      <div class="image">
-        <img src="imgs/Nioh.jpg" alt="" />
-      </div>
+			</div>
 
-      <div class="description">
-        <span>Nioh</span>
-        <span>Classic</span>
-        <span>Action</span>
-      </div>
-
-      <div class="quantity">
-        <button class="plus-btn" type="button" name="button">
-          <img src="plus.svg" alt="" />
-        </button>
-        <input type="text" name="name" value="1">
-        <button class="minus-btn" type="button" name="button">
-          <img src="minus.svg" alt="" />
-        </button>
-      </div>
-
-      <div class="total-price">$349</div>
-    </div>
-
-    <!-- Total  -->
-    <div class="item">
-      <div class="buttons" style="visibility:hidden">
-        <span class="delete-btn"></span>
-        <span class="like-btn"></span>
-      </div>
-
-      <div class="image" style="visibility:hidden">
-        <img src="imgs/Nioh.jpg" alt="" />
-      </div>
-
-      <div class="description" id='total'>
-        <span style="font-size: 15px;">Total</span>
-        <span>$1000</span>
-      </div>
-      <div class="image">
-        <img src="imgs/confirm-shopping.png" alt="">
-      </div>
-    </div>
-  </div>
-  
 </body>
-
-</html>

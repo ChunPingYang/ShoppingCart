@@ -1,41 +1,76 @@
-$('.delete-btn').click(function () {
-    alert('her');
-    $(this).closest('div').remove();
+/* Set rates + misc */
+var taxRate = 0.05;
+var shippingRate = 0;
+var fadeTime = 300;
+
+
+/* Assign actions */
+$(document).ready(function () {
+    $('.product-quantity input').change(function () {
+        updateQuantity(this);
+    });
+
+    $('.product-removal button').click(function () {
+        removeItem(this);
+    });
 });
 
 
 
-// $('.minus-btn').on('click', function (e) {
-//     e.preventDefault();
-//     var $this = $(this);
-//     var $input = $this.closest('div').find('input');
-//     var value = parseInt($input.val());
+/* Recalculate cart */
+function recalculateCart() {
+    var subtotal = 0;
 
-//     if (value > 1) {
-//         value = value - 1;
-//     } else {
-//         value = 0;
-//     }
+    /* Sum up row totals */
+    $('.product').each(function () {
+        subtotal += parseFloat($(this).children('.product-line-price').text());
+    });
 
-//     $input.val(value);
+    /* Calculate totals */
+    var tax = subtotal * taxRate;
+    var shipping = (subtotal > 0 ? shippingRate : 0);
+    var total = subtotal + tax + shipping;
 
-// });
+    /* Update totals display */
+    $('.totals-value').fadeOut(fadeTime, function () {
+        $('#cart-subtotal').html(subtotal.toFixed(2));
+        $('#cart-tax').html(tax.toFixed(2));
+        $('#cart-shipping').html(shipping.toFixed(2));
+        $('#cart-total').html(total.toFixed(2));
+        if (total == 0) {
+            $('.checkout').fadeOut(fadeTime);
+        } else {
+            $('.checkout').fadeIn(fadeTime);
+        }
+        $('.totals-value').fadeIn(fadeTime);
+    });
+}
 
-// $('.plus-btn').on('click', function (e) {
-//     e.preventDefault();
-//     var $this = $(this);
-//     var $input = $this.closest('div').find('input');
-//     var value = parseInt($input.val());
+/* Update quantity */
+function updateQuantity(quantityInput) {
+    /* Calculate line price */
+    var productRow = $(quantityInput).parent().parent();
+    var price = parseFloat(productRow.children('.product-price').text());
+    var quantity = $(quantityInput).val();
+    var linePrice = price * quantity;
 
-//     if (value < 100) {
-//         value = value + 1;
-//     } else {
-//         value = 100;
-//     }
+    /* Update line price display and recalc cart totals */
+    productRow.children('.product-line-price').each(function () {
+        $(this).fadeOut(fadeTime, function () {
+            $(this).text(linePrice.toFixed(2));
+            recalculateCart();
+            $(this).fadeIn(fadeTime);
+        });
+    });
+}
 
-//     $input.val(value);
-// });
 
-// $('.like-btn').on('click', function () {
-//     $(this).toggleClass('is-active');
-// });
+/* Remove item from cart */
+function removeItem(removeButton) {
+    /* Remove row from DOM and recalc cart total */
+    var productRow = $(removeButton).parent().parent();
+    productRow.slideUp(fadeTime, function () {
+        productRow.remove();
+        recalculateCart();
+    });
+}
