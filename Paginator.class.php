@@ -7,6 +7,7 @@
         private $_limit;
         private $_query;
         private $_total;
+        private $_rs;
 
 
         public function __construct($conn, $query){
@@ -15,8 +16,17 @@
             $this->_query = $query;
 
             $rs = $this->_conn->query($this->_query);
-            $this->_total = $rs->num_rows;
+            if($rs){
+                $this->_rs = $rs;
+                $this->_total = $rs->num_rows;
+            }else{
+                $this->_rs = $rs;
+                $this->_total = 0;
+            }
+        }
 
+        public function getResult(){
+            return $this->_rs;
         }
 
         public function getData($limit = 3, $page = 1){
@@ -31,7 +41,7 @@
             }
 
             $rs = $this->_conn->query($query);
-
+            
             while($row = $rs->fetch_array()){
                 $results[] = $row;
             }

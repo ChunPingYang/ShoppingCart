@@ -5,7 +5,7 @@ $username = 'root';
 $password = '';
 
 // Create connection
-$con = new mysqli($servername, $username, $password, "shoppingcart");
+$con = new mysqli($servername, $username, $password, "amz");
 
 // Check connection
 if ($con->connect_error) {
