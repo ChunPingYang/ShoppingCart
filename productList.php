@@ -7,71 +7,98 @@
 
 <?php
 
+	$price		= ( isset( $_GET['price'] ) ) ? $_GET['price'] : -1;
 	$option     = ( isset( $_GET['option'] ) ) ? $_GET['option'] : 1;
-	$limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 3;
+	$limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 10;
 	$page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
 	$links      = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
-
-$results = "";	
+	
+$sql = "";
 if(isset($_POST['search'])){
-
 	$keyword = trim($_POST['search']);
 
-	$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price ASC";
+	$sql = "SELECT * FROM product_test WHERE Game_name like '%$keyword%' ORDER BY price ASC";
 	if($option == 2){
-		$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY PRICE DESC";
+		$sql = "SELECT * FROM product_test WHERE Game_name like '%$keyword%' ORDER BY price DESC";
 	}
-	$Paginator = new Paginator($con,$sql);
-	$results    = $Paginator->getData( $limit, $page );
 
 }else{
 
-	$sql = "SELECT * FROM product ORDER BY price ASC";
-	if($option == 2){
-		$sql = "SELECT * FROM product ORDER BY PRICE DESC";
+	if($price == -1){
+		$sql = "SELECT * FROM product_test ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test ORDER BY price DESC";
+		}
+	}else if($price == 0){
+		$sql = "SELECT * FROM product_test WHERE price <= 20 ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test WHERE price <= 20 ORDER BY price DESC";
+		}
+	}else if($price == 1){
+		$sql = "SELECT * FROM product_test WHERE price BETWEEN 21 AND 30 ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test WHERE price BETWEEN 21 AND 30 ORDER BY price DESC";
+		}
+	}else if($price == 2){
+		$sql = "SELECT * FROM product_test WHERE price BETWEEN 31 AND 40 ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test WHERE price BETWEEN 31 AND 40 ORDER BY price DESC";
+		}
+	}else if($price == 3){
+		$sql = "SELECT * FROM product_test WHERE price BETWEEN 41 AND 50 ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test WHERE price BETWEEN 41 AND 50 ORDER BY price DESC";
+		}
+	}else if($price == 4){
+		$sql = "SELECT * FROM product_test WHERE price >= 51 ORDER BY price ASC";
+		if($option == 2){
+			$sql = "SELECT * FROM product_test WHERE price >= 51 ORDER BY price DESC";
+		}
 	}
-	$Paginator = new Paginator($con,$sql);
-	$results    = $Paginator->getData( $limit, $page );
 
 }
 
+ echo "sql: ".$sql;
+ $Paginator = new Paginator($con,$sql);
+ $rs = $Paginator->getResult();
+ $results = false;
+ if($rs){
+ 	$results    = $Paginator->getData( $limit, $page );
+ }
 ?>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
 
-		function load(){
-
+		//Filter by price
+		$('input[type=radio][name=price]').change(function() {
+			console.log("price: "+this.value);  //TODO why this.value undefined
+			var price = this.value;
 			$.ajax({
-				type: "POST",
-				url: "getProductList.php",
-				dataType: "html",
-				beforeSend: function(jqXHR,settings){
-					$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
-					
-				},
+				type: "GET",
 				success: function(data){
-					//alert(data);
-					$(".card-container").append(data);
+					window.location = '?option=<?php echo $option?>&price='+price;
 				},
-				complete: function(){
-					
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.log("status: "+xhr.status);
+					console.log("Error: "+thrownError);
 				}
 			});
-		}
+		});
 
-		//load();
+		$('input[type=radio][name=price]').each(function(){
+			if(this.value == <?php echo $price?>){
+				this.checked = true;
+			}
+		})
+
 		
 	});
-
-
-
 </script>
 
 		<main class="card-container"> 
-			<nav class="sortbar">
-			
+				<nav class="sortbar">
 						<ul>
 							<li >Sort by:</li>
 							<li>
@@ -96,15 +123,16 @@ if(isset($_POST['search'])){
 						</ul>
 				</nav>
 				
-				<?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
+				<?php if($results){ ?>
+						<?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
 							<article class="card">
 									<div>
 										<figure class="">
-											<img  src="imgs/samsung.jpg">
+											<img src=<?php echo $results->data[$i]['image'];?>/>
 										</figure>
 									</div>
 									<div class="productDes">
-										<h2><?php echo $results->data[$i]['pname']; ?></h2>
+										<h2><?php echo $results->data[$i]['Game_name']; ?></h2>
 										<p><?php echo $results->data[$i]['description']; ?></p>
 									</div>
 									<div class="col3">
@@ -122,43 +150,12 @@ if(isset($_POST['search'])){
 										</div>
 									</div>	
 							</article>
-				<?php endfor; ?>
+						<?php endfor;?>
 				<?php echo $Paginator->createLinks( $links, 'pagination pagination-sm',$option); ?> 
+				<?php } ?>
 		</main>
 		
 		<?php include_once 'inc/footer.php';?>
 		
-		<script src="./js/productList.js?version=1.0"></script>
-		<!--
-		<script type="text/javascript">
-		/*挑選sort無法display*/
-			var optionDiv = document.getElementsByClassName("select-items");
-			var option = optionDiv[0].getElementsByTagName("DIV");
-			for(var i=0;i<option.length;i++){
-				if(option[i].getAttribute("value") == <?php echo $option?>){
-
-						console.log("option: "+option[i].getAttribute('value'));
-
-						/*when an item is clicked, update the original select box,
-						and the selected item:*/
-						var y, i, k, s, h;
-						s = option[i].parentNode.parentNode.getElementsByTagName("select")[0];
-						h = option[i].parentNode.previousSibling; //最上層要顯示的
-						for (i = 0; i < s.length; i++) {
-							if (s.options[i].innerHTML == option[i].innerHTML) {
-								s.selectedIndex = i;
-								h.innerHTML = option[i].innerHTML;
-								y = option[i].parentNode.getElementsByClassName("same-as-selected");
-								for (k = 0; k < y.length; k++) {
-									y[k].removeAttribute("class");
-								}
-								option[i].setAttribute("class", "same-as-selected");
-								break;
-							}
-						}
-						//h.click();
-						break;
-				}
-			}
-		</script>
-		-->
+		<script src="./js/productList.js?version=2.0"></script>
+		

@@ -62,7 +62,7 @@ for (i = 0; i < x.length; i++) {
         //console.log(document.getElementById("sort")); //可以取到id
         if(x[0].getAttribute("name") == "sort"){
           console.log("Sort .............");
-            sort(this);
+          passSortOption(this);
         }else if(x[0].getAttribute("name") == "viewPage"){
 
         }
@@ -171,22 +171,27 @@ function sort(element){
 
   }
 
-  console.log("AAAAAAAAAA");
+
   passSortOption(value);
   optionVal = value;
 }
 
-function passSortOption(option){
+function passSortOption(element){
+  var option = element.getAttribute("value");
   console.log("enter passSortOption: "+option);
   $.ajax({
     type: "GET",
-    data:({option:option}),
+    //url: "productList.php",
+    data:{option:option},
+    //dataType:"html",
     beforeSend: function(jqXHR,settings){
       //$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
       
     },
     success: function(data){
-      window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
+      //window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
+      window.location = '?option='+option;
+      alert(data);
     },
     complete: function(){
       

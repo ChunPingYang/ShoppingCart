@@ -23,7 +23,7 @@
 <!-- //for-mobile-apps -->
 <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
-<link href="./css/style.css" rel='stylesheet' type='text/css' />
+<link href="./css/style.css?version=1.0" rel='stylesheet' type='text/css' />
 
 
 
