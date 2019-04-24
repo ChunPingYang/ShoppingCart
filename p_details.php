@@ -131,7 +131,7 @@ if(!empty($id)){
 			</div>
 			<h2>Product details</h2>
 			<p style="font-size: 20px"><?php echo $description;?></p>
-			<img src=<?php echo $s1;?>>
+			<img calss = "middle" src=<?php echo $s1;?>>
 			<img src=<?php echo $s2;?>>
 		</div>
 
