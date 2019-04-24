@@ -17,42 +17,42 @@ $sql = "";
 if(isset($_POST['search'])){
 	$keyword = trim($_POST['search']);
 
-	$sql = "SELECT * FROM product_test WHERE Game_name like '%$keyword%' ORDER BY price ASC";
+	$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price ASC";
 	if($option == 2){
-		$sql = "SELECT * FROM product_test WHERE Game_name like '%$keyword%' ORDER BY price DESC";
+		$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price DESC";
 	}
 
 }else{
 
 	if($price == -1){
-		$sql = "SELECT * FROM product_test ORDER BY price ASC";
+		$sql = "SELECT * FROM product ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test ORDER BY price DESC";
+			$sql = "SELECT * FROM product ORDER BY price DESC";
 		}
 	}else if($price == 0){
-		$sql = "SELECT * FROM product_test WHERE price <= 20 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price <= 20 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test WHERE price <= 20 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price <= 20 ORDER BY price DESC";
 		}
 	}else if($price == 1){
-		$sql = "SELECT * FROM product_test WHERE price BETWEEN 21 AND 30 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price BETWEEN 21 AND 30 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test WHERE price BETWEEN 21 AND 30 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price BETWEEN 21 AND 30 ORDER BY price DESC";
 		}
 	}else if($price == 2){
-		$sql = "SELECT * FROM product_test WHERE price BETWEEN 31 AND 40 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price BETWEEN 31 AND 40 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test WHERE price BETWEEN 31 AND 40 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price BETWEEN 31 AND 40 ORDER BY price DESC";
 		}
 	}else if($price == 3){
-		$sql = "SELECT * FROM product_test WHERE price BETWEEN 41 AND 50 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price BETWEEN 41 AND 50 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test WHERE price BETWEEN 41 AND 50 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price BETWEEN 41 AND 50 ORDER BY price DESC";
 		}
 	}else if($price == 4){
-		$sql = "SELECT * FROM product_test WHERE price >= 51 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price >= 51 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product_test WHERE price >= 51 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price >= 51 ORDER BY price DESC";
 		}
 	}
 
@@ -132,7 +132,7 @@ if(isset($_POST['search'])){
 										</figure>
 									</div>
 									<div class="productDes">
-										<h2><?php echo $results->data[$i]['Game_name']; ?></h2>
+										<h2><?php echo $results->data[$i]['pname']; ?></h2>
 										<p><?php echo $results->data[$i]['description']; ?></p>
 									</div>
 									<div class="col3">
