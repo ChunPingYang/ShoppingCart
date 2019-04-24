@@ -1,7 +1,7 @@
 
 .product-image {
     float: left;
-    width: 20%;
+    width: 30%;
 }
 
 .product-details {
@@ -113,7 +113,7 @@ label {
 }
 
 .product .product-image img {
-    width: 100px;
+    width: 120px;
 }
 
 .product .product-details .product-title {

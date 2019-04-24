@@ -6,8 +6,10 @@ var fadeTime = 300;
 
 /* Assign actions */
 $(document).ready(function () {
+    recalculateCart();
     $('.product-quantity input').change(function () {
         updateQuantity(this);
+        
     });
 
     $('.product-removal button').click(function () {
