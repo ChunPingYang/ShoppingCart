@@ -17,42 +17,48 @@ $sql = "";
 if(isset($_POST['search'])){
 	$keyword = trim($_POST['search']);
 
-	$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price ASC";
+	$sql = "SELECT * FROM product WHERE pname like '%$keyword%' AND display = 1 ORDER BY price ASC";
 	if($option == 2){
-		$sql = "SELECT * FROM product WHERE pname like '%$keyword%' ORDER BY price DESC";
+		$sql = "SELECT * FROM product WHERE pname like '%$keyword%' AND display = 1 ORDER BY price DESC";
 	}
 
 }else{
-
+//10x+11 10x+20
 	if($price == -1){
-		$sql = "SELECT * FROM product ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE display = 1 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE display = 1 ORDER BY price DESC";
 		}
 	}else if($price == 0){
-		$sql = "SELECT * FROM product WHERE price <= 20 ORDER BY price ASC";
+		$sql = "SELECT * FROM product WHERE price <= 20 AND display = 1 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product WHERE price <= 20 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price <= 20 AND display = 1 ORDER BY price DESC";
 		}
-	}else if($price == 1){
-		$sql = "SELECT * FROM product WHERE price BETWEEN 21 AND 30 ORDER BY price ASC";
-		if($option == 2){
-			$sql = "SELECT * FROM product WHERE price BETWEEN 21 AND 30 ORDER BY price DESC";
+	}
+
+	for($i=1;$i<=3;$i++){
+		if($price == $i){
+			$sql = "SELECT * FROM product WHERE price BETWEEN '$i'*10+11 AND '$i'*10+20 AND display = 1 ORDER BY price ASC";
+			if($option == 2){
+				$sql = "SELECT * FROM product WHERE price BETWEEN '$i'*10+11 AND '$i'*10+20 AND display = 1 ORDER BY price DESC";
+			}
+			break;
 		}
-	}else if($price == 2){
-		$sql = "SELECT * FROM product WHERE price BETWEEN 31 AND 40 ORDER BY price ASC";
+	}
+	
+	if($price == 4){
+		$sql = "SELECT * FROM product WHERE price >= 51 AND display = 1 AND display = 1 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product WHERE price BETWEEN 31 AND 40 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE price >= 51 AND display = 1 AND display = 1 ORDER BY price DESC";
 		}
-	}else if($price == 3){
-		$sql = "SELECT * FROM product WHERE price BETWEEN 41 AND 50 ORDER BY price ASC";
+	}
+
+
+
+	if($price == -1){
+		$sql = "SELECT * FROM product WHERE display = 1 ORDER BY price ASC";
 		if($option == 2){
-			$sql = "SELECT * FROM product WHERE price BETWEEN 41 AND 50 ORDER BY price DESC";
-		}
-	}else if($price == 4){
-		$sql = "SELECT * FROM product WHERE price >= 51 ORDER BY price ASC";
-		if($option == 2){
-			$sql = "SELECT * FROM product WHERE price >= 51 ORDER BY price DESC";
+			$sql = "SELECT * FROM product WHERE display = 1 ORDER BY price DESC";
 		}
 	}
 
@@ -137,7 +143,7 @@ if(isset($_POST['search'])){
 									</div>
 									<div class="col3">
 										<div class="column">
-											
+
 										</div>
 										<div class="column">
 											<i name="price" class="fa fa-dollar" style="font-size:48px;color:red">
