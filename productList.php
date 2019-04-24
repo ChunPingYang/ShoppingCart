@@ -128,7 +128,7 @@ if(isset($_POST['search'])){
 							<article class="card">
 									<div>
 										<figure class="">
-											<img src=<?php echo $results->data[$i]['image'];?>/>
+											<a href = "p_details.php?q=<?php echo $results->data[$i]['itemid'];?>"> <img src=<?php echo $results->data[$i]['image'];?>/></a>
 										</figure>
 									</div>
 									<div class="productDes">
