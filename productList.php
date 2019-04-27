@@ -55,11 +55,12 @@ if($option == 1){
 	$sql .= " ORDER BY price DESC";
 }
 
- echo "sql: ".$sql;
+echo "query: ".$sql;
  $Paginator = new Paginator($con,$sql);
- $rs = $Paginator->getResult();
+ $num_rows = $Paginator->getResult();
  $results = false;
- if($rs){
+ if($num_rows > 0){
+	 echo "rs is true";
  	$results    = $Paginator->getData( $limit, $page );
  }
 ?>
@@ -126,13 +127,16 @@ if($option == 1){
 </script>
 
 		<main class="card-container"> 
+			<form id="priceSort" method="GET">
+				<input type="hidden" name="price" value="<?php echo $price?>"/>
+				<input type="hidden" name="minimum_rating" value="<?php echo $minimum_rating?>" />
+                <input type="hidden" name="maximum_rating" value="<?php echo $maximum_rating?>" />	
 				<nav class="sortbar">
 						<ul>
 							<li ><h2>Sort by:</h2></li>
 							<li>
 								<div name="sort" class="custom-select" style="width:150px;">
-									<select>
-										<option value="0">Top Rated</option>
+									<select name="option">
 										<option value="1">Price:Low to High</option>
 										<option value="2">Price:High to Low</option>
 									</select>
@@ -140,8 +144,8 @@ if($option == 1){
 							</li>
 						</ul>
 				</nav>
-				
-				<?php if($results){ ?>
+			</form>
+				<?php if($num_rows > 0){ ?>
 						<?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
 							<article class="card">
 									<div>
@@ -171,7 +175,7 @@ if($option == 1){
 									</div>	
 							</article>
 						<?php endfor;?>
-				<?php echo $Paginator->createLinks( $links, 'pagination pagination-sm',$option); ?> 
+				<?php echo $Paginator->createLinks( $links, 'pagination pagination-sm',$option, $price, $minimum_rating, $maximum_rating); ?> 
 				<?php } ?>
 		</main>
 		
