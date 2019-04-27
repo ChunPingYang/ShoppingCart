@@ -3,10 +3,13 @@
 <?php include_once 'connection.php';?>
 <?php include_once 'Paginator.class.php';?>
 <link href="./css/productList.sort.css?version3.0" rel='stylesheet' type='text/css' />
-<link href="./css/productList.css?version=3.0" rel="stylesheet" type="text/css" />
+<link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css" />
 
 <?php
+	session_start();
 
+	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
+	$username		= ( isset( $_SESSION['username'] ) ) ? $_SESSION['username'] : "guest";
 	$price			= ( isset( $_GET['price'] ) ) ? $_GET['price'] : -1;
 	$option     	= ( isset( $_GET['option'] ) ) ? $_GET['option'] : 1;
 	$limit      	= ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 10;
@@ -62,21 +65,6 @@ echo "query: ".$sql;
 
 	$(document).ready(function(){
 
-		//Filter by price
-		// $('input[type=radio][name=price]').change(function() {
-		// 	console.log("price: "+this.value);  //TODO why this.value undefined
-		// 	var price = this.value;
-		// 	$.ajax({
-		// 		type: "GET",
-		// 		success: function(data){
-		// 			window.location = '?option=<?php echo $option?>&price='+price;
-		// 		},
-		// 		error: function (xhr, ajaxOptions, thrownError) {
-		// 			console.log("status: "+xhr.status);
-		// 			console.log("Error: "+thrownError);
-		// 		}
-		// 	});
-		// });
 		$('input[type=radio][name=price]').click(function(){
 			$('#navForm').submit();
 		});
@@ -93,17 +81,7 @@ echo "query: ".$sql;
 				$('#rating_show').html(ui.values[0] + ' - ' + ui.values[1]);
 				$('#hidden_minimum_rating').val(ui.values[0]);
 				$('#hidden_maximum_rating').val(ui.values[1]);
-				// $.ajax({
-				// 	type: "GET",
-				// 	success: function(data){
-				// 		window.location = '?option=<?php echo $option?>&price=<?php echo $price?>'
-				// 								+'&minimum_rating='+ui.values[0]+'&maximum_rating='+ui.values[1];
-				// 	},
-				// 	error: function (xhr, ajaxOptions, thrownError) {
-				// 		console.log("status: "+xhr.status);
-				// 		console.log("Error: "+thrownError);
-				// 	}
-				// });
+				
 				document.getElementById("navForm").submit();
 
 			}
@@ -115,6 +93,15 @@ echo "query: ".$sql;
 			}
 		})
 		
+		$('button').click(function(){
+		
+			if("<?php echo $userid ?>" == "guest" && "<?php echo $username ?>" == "guest"){
+				window.location = "regipage.php";
+			}
+
+			var itemid = $(this).prev().val();
+			window.location = "shoppingCart.php?itemid="+itemid;
+		})
 		
 	});
 </script>
@@ -140,10 +127,10 @@ echo "query: ".$sql;
 			</form>
 				<?php if($num_rows > 0){ ?>
 						<?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
-							<article class="card">
+							<article>
 									<div>
-										<figure class="">
-											<a href = "p_details.php?q=<?php echo $results->data[$i]['itemid'];?>"> <img src=<?php echo $results->data[$i]['image'];?>/></a>
+										<figure>
+											<a href = "p_details.php?q=<?php echo $results->data[$i]['itemid'];?>"> <img style="border-radius: 5px;"src=<?php echo $results->data[$i]['image'];?>/></a>
 										</figure>
 									</div>
 									<div class="productDes">
@@ -152,7 +139,7 @@ echo "query: ".$sql;
 											<?php echo $results->data[$i]['rating']; ?>
 										</i>
 									</div>
-									<div class="col3">
+									<div>
 										<div class="column">
 											
 										</div>
@@ -162,8 +149,8 @@ echo "query: ".$sql;
 											</i>
 										</div>
 										<div class="column">
-											<input type="text">
-											<button type="button" class="addCart">Add to Cart</button>
+											<input type="hidden" value="<?php echo $results->data[$i]['itemid'];?>" />
+											<button type="button" class="addCart" value="button<?php echo $i?>">Add to Cart</button>
 										</div>
 									</div>	
 							</article>

@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./js/nav.js?version=1.0"></script>
 <nav class="nav_container">
         <form id="navForm" action="./productList.php" method="GET">
             <div>

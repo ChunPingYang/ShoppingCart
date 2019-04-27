@@ -42,8 +42,8 @@
 
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class="active"><a href="index.html" class="hyper "><span>Home</span></a></li>
-							<li><a href="#" class="hyper"> <span>Best Sellers</span></a></li>
+							<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
+							<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
 							<li><a href="#" class="hyper"><span>New Games</span></a></li>
 						</ul>
 					</div>
