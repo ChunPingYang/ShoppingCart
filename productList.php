@@ -60,7 +60,6 @@ echo "query: ".$sql;
  $num_rows = $Paginator->getResult();
  $results = false;
  if($num_rows > 0){
-	 echo "rs is true";
  	$results    = $Paginator->getData( $limit, $page );
  }
 ?>
