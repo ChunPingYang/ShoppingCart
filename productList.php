@@ -25,12 +25,6 @@ if(isset($_POST['search'])){
 //10x+11 10x+20
 	if($price == 0){
 		$sql .= " AND price <= 20";
-		if(!empty($minimum_rating) && !empty($maximum_rating))
-		{
-			$sql .= " 
-				AND rating BETWEEN '".$minimum_rating."' AND '".$maximum_rating."'
-			";
-		}
 	}
 
 	for($i=1;$i<=3;$i++){
