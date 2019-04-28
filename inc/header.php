@@ -1,3 +1,11 @@
+<?php 
+	session_start();
+
+	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
+	//SELECT count(*) FROM `cart` WHERE userid = 2;
+	$result = mysqli_query($con,"select * from cart where userid = $userid;");
+	$num_cart = mysqli_num_rows($result);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -44,12 +52,12 @@
 						<ul class="nav navbar-nav ">
 							<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
 							<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
-							<li><a href="#" class="hyper"><span>New Games</span></a></li>
+							<li><a href="./newGames.html" class="hyper"><span>New Games</span></a></li>
 						</ul>
 					</div>
 					</nav>
 					<div class="cart" >
-						<a href="profile.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
+						<a href="profile.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>
 					</div>
 					<form align = "center" action="./productList.php" method="POST">
 						<font size = "5">Search:</font>
