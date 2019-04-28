@@ -36,8 +36,8 @@ for (i = 0; i < x.length; i++) {
     // }else if(x[0].getAttribute("class") == "viewPage"){
 
     // }
-
-    c.setAttribute("value",j);//Jason add
+    console.log("selElmnt value: "+j+1);
+    c.setAttribute("value",j+1);//set option value
     c.addEventListener("click", function(e) {
         /*when an item is clicked, update the original select box,
         and the selected item:*/
@@ -176,39 +176,30 @@ function sort(element){
   optionVal = value;
 }
 
+
 function passSortOption(element){
   var option = element.getAttribute("value");
   console.log("enter passSortOption: "+option);
-  $.ajax({
-    type: "GET",
-    //url: "productList.php",
-    data:{option:option},
-    //dataType:"html",
-    beforeSend: function(jqXHR,settings){
-      //$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
+  // $.ajax({
+  //   type: "GET",
+  //   //url: "productList.php",
+  //   data:{option:option},
+  //   //dataType:"html",
+  //   beforeSend: function(jqXHR,settings){
+  //     //$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
       
-    },
-    success: function(data){
-      //window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
-      window.location = '?option='+option;
-      alert(data);
-    },
-    complete: function(){
+  //   },
+  //   success: function(data){
+  //     //window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
+  //     window.location = '?option='+option+'&price=<?php echo $price?>';
+  //   },
+  //   complete: function(){
       
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      alert(xhr.status);
-      alert(thrownError);
-    }
-  });
-
-}
-
-
-optionVal = '<?php echo $option?>';
-console.log("optionVal: "+optionVal);
-if(optionVal == 1){
-    var optionDiv = document.getElementsByClassName("select-items");
-    console.log(optionDiv.tagName);
-    console.log("length: "+optionDiv.length);
+  //   },
+  //   error: function (xhr, ajaxOptions, thrownError) {
+  //     alert(xhr.status);
+  //     alert(thrownError);
+  //   }
+  // });
+    document.getElementById("priceSort").submit();
 }

@@ -42,8 +42,8 @@
 
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav ">
-							<li class="active"><a href="index.html" class="hyper "><span>Home</span></a></li>
-							<li><a href="#" class="hyper"> <span>Best Sellers</span></a></li>
+							<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
+							<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
 							<li><a href="#" class="hyper"><span>New Games</span></a></li>
 						</ul>
 					</div>
@@ -51,7 +51,7 @@
 					<div class="cart" >
 						<a href="profile.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
 					</div>
-					<form align = "center" action="productList.php" method="POST">
+					<form align = "center" action="./productList.php" method="POST">
 						<font size = "5">Search:</font>
 						<input type = "text" value = "" name="search"/>
 						<input type = "submit" value = "submit"/>

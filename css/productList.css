@@ -9,14 +9,10 @@ main {
     grid-area: content;
 }
 
-.card {
+article {
     display: grid;
-    grid-template-columns: 30% 40% 30%;
-}
-
-article > div{
-    border-radius: 5px;
-    border:1px solid blue; 
+    grid-template-columns: 40% 30% 30%;
+    box-shadow: 10px 10px 5px grey;
 }
 
 .column > button {
