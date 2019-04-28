@@ -58,7 +58,7 @@
 
             $last = ceil($this->_total / $this->_limit);
 
-            $start = (($this->_page - $links) > 0)? $this->page - $links : 1;
+            $start = (($this->_page - $links) > 0)? $this->_page - $links : 1;
             $end = (($this->_page + $links) < $last) ? $this->_page + $links : $last;
 
             $html = '<ul class="' . $list_class . '">';
