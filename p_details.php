@@ -113,7 +113,7 @@ if(!empty($id)){
 					<h2><img src=<?php echo $image;?> alt="picture"></h2>
 					<p></p>
 				</div>
-				<div class="column right">
+				<div class="right">
 					<h2>Price: <?php echo $price;?></h2>
 					<p><img src="imgs/buy-now-flashing.gif" alt="buy now" width="200"></p>
 				</div>
@@ -132,7 +132,8 @@ if(!empty($id)){
 			<h2>Product details</h2>
 			<p style="font-size: 20px"><?php echo $description;?></p>
 			<img class = "middle" src=<?php echo $s1;?>>
-			<img src=<?php echo $s2;?>>
+			<img class = "middle" src=<?php echo $s2;?>>
+			<img class = "middle" src=<?php echo $s3;?>>
 		</div>
 
 	</div>
