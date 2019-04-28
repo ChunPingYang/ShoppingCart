@@ -75,7 +75,7 @@ echo "query: ".$sql;
 			min:0,
 			max:99, //TODO SQL Type to Integer
 			values:[<?php echo $minimum_rating?>, <?php echo $maximum_rating?>],
-			step:10,
+			step:11,
 			stop:function(event, ui)
 			{
 				$('#rating_show').html(ui.values[0] + ' - ' + ui.values[1]);
