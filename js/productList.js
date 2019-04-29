@@ -1,12 +1,10 @@
 var x, i, j, selElmnt, a, b, c, optionVal;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
-//x = document.getElementsByName("sort");
-                                  console.log("length .....: "+x.length);
+
 for (i = 0; i < x.length; i++) {
   selElmnt = x[i].getElementsByTagName("select")[0];
-                                  console.log("element tag name: "+selElmnt.tagName);
-  //console.log("selElmnt: "+selElmnt.length);
+  
   /*for each element, create a new DIV that will act as the selected item:*/
   a = document.createElement("DIV");
   a.setAttribute("class", "select-selected");
@@ -15,14 +13,6 @@ for (i = 0; i < x.length; i++) {
   /*for each element, create a new DIV that will contain the option list:*/
   b = document.createElement("DIV");
   b.setAttribute("class", "select-items select-hide");
-                                  console.log(x[0].getAttribute("name"));
-                                  console.log("selElmnt length: "+selElmnt.length);
-//different actions use different attribute id
-// if(x[0].getAttribute("name") == "sort"){
-//   b.setAttribute("id", x[0].getAttribute("name"));
-// }else if(x[0].getAttribute("class") == "viewPage"){
-
-// }
 
   for (j =0; j < selElmnt.length; j++) {
     /*for each option in the original select element,
@@ -30,13 +20,6 @@ for (i = 0; i < x.length; i++) {
     c = document.createElement("DIV");
     c.innerHTML = selElmnt.options[j].innerHTML;
 
-    //different actions use different functions
-    // if(x[0].getAttribute("name") == "sort"){
-    //   //c.setAttribute("onclick","sort()"); //Jason add
-    // }else if(x[0].getAttribute("class") == "viewPage"){
-
-    // }
-    console.log("selElmnt value: "+j+1);
     c.setAttribute("value",j+1);//set option value
     c.addEventListener("click", function(e) {
         /*when an item is clicked, update the original select box,
@@ -59,13 +42,7 @@ for (i = 0; i < x.length; i++) {
         }
         h.click();
 
-        //console.log(document.getElementById("sort")); //可以取到id
-        if(x[0].getAttribute("name") == "sort"){
-          console.log("Sort .............");
-          passSortOption(this);
-        }else if(x[0].getAttribute("name") == "viewPage"){
-
-        }
+        document.getElementById("priceSort").submit();
     });
     b.appendChild(c);
   }
@@ -106,100 +83,3 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
-
-
-
-function sort(element){
-  var i, switching, a,b, shouldSwitch, dir, switchcount = 0;
-  var value = element.getAttribute("value");
-  console.log("value option: "+value);
-  switching = true;
-  console.log("BBBBBB");
-  if(value == 0){ //TODO rate sort
-
-  }else if(value == 1){ //ASC
-
-    while(switching){
-        // Start by saying: no switching is done:
-        switching = false;
-        a = document.getElementsByTagName("article");
-        b = document.getElementsByName("price");
-        console.log("list length: "+b.length);
-        // Loop through all list-items:
-        for(i=0;i<b.length-1;i++){
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should switch place with the current item*/
-            if(Number(b[i].innerHTML) > Number(b[i+1].innerHTML)){
-              shouldSwitch = true;
-              break;
-            }
-        }
-        if(shouldSwitch){
-            /* If a switch has been marked, make the switch
-            and mark that a switch has been done: */
-            a[i].parentNode.insertBefore(a[i+1],a[i]);
-            switching = true;
-        }
-    }
-
-  }else if(value == 2){ //DSC
-
-      while(switching){
-        // Start by saying: no switching is done:
-        switching = false;
-        a = document.getElementsByTagName("article");
-        b = document.getElementsByName("price");
-        console.log("list length: "+b.length);
-        // Loop through all list-items:
-        for(i=0;i<b.length-1;i++){
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should switch place with the current item*/
-            if(Number(b[i].innerHTML) < Number(b[i+1].innerHTML)){
-              shouldSwitch = true;
-              break;
-            }
-        }
-        if(shouldSwitch){
-            /* If a switch has been marked, make the switch
-            and mark that a switch has been done: */
-            a[i].parentNode.insertBefore(a[i+1],a[i]);
-            switching = true;
-        }
-      }
-
-  }
-
-
-  passSortOption(value);
-  optionVal = value;
-}
-
-
-function passSortOption(element){
-  var option = element.getAttribute("value");
-  console.log("enter passSortOption: "+option);
-  // $.ajax({
-  //   type: "GET",
-  //   //url: "productList.php",
-  //   data:{option:option},
-  //   //dataType:"html",
-  //   beforeSend: function(jqXHR,settings){
-  //     //$('head').append($('<link rel="stylesheet" type="text/css" />').attr('href','./css/productList.css?version=3.0'));
-      
-  //   },
-  //   success: function(data){
-  //     //window.location.replace("http://localhost:8080/ShoppingCart/productList.php?option="+option);
-  //     window.location = '?option='+option+'&price=<?php echo $price?>';
-  //   },
-  //   complete: function(){
-      
-  //   },
-  //   error: function (xhr, ajaxOptions, thrownError) {
-  //     alert(xhr.status);
-  //     alert(thrownError);
-  //   }
-  // });
-    document.getElementById("priceSort").submit();
-}

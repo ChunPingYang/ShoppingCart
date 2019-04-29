@@ -39,9 +39,10 @@ article {
 }
 
 .productDes{
-    padding:25%;
+    padding:35px;
 }
 
 .productDes > p{
     word-break: break-all;
 }
+

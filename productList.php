@@ -9,9 +9,9 @@
 
 	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
 	$username		= ( isset( $_SESSION['username'] ) ) ? $_SESSION['username'] : "guest";
-	$price			= ( isset( $_GET['price'] ) ) ? $_GET['price'] : -1;
+	$price			= ( isset( $_GET['price'] ) ) ? $_GET['price'] : "all";
+	$category     	= ( isset( $_GET['category'] ) ) ? $_GET['category'] : "all";
 	$option     	= ( isset( $_GET['option'] ) ) ? $_GET['option'] : 1;
-	//$category       = ( isset( $_GET['category'] ) ) ? $_GET['category'] : -1;
 	$limit      	= ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 10;
 	$page       	= ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
 	$links      	= ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
@@ -46,10 +46,10 @@ $sql .= "
 		AND rating BETWEEN '".$minimum_rating."%' AND '".$maximum_rating."%'
 		";
 
-$category = $_Get['q'];
-if(isset($category)){
+
+if($category != "all"){
 	$sql .= " AND category =  '".$category."' ";	
-		}
+}
 		
 if($option == 1){
 	$sql .= " ORDER BY price ASC";
@@ -71,9 +71,23 @@ echo "query: ".$sql;
 <script type="text/javascript">
 
 	$(document).ready(function(){
-
+		
 		$('input[type=radio][name=price]').click(function(){
 			$('#navForm').submit();
+		});
+
+		$('input[type=radio][name=price]').each(function(){
+			if(this.value == '<?php echo $price?>'){
+				this.checked = true;
+			}
+		});
+
+		$('select[name=sort]').each(function(){
+			$(this).find('option[value="<?php echo $option?>"]').prop('selected', true);
+		});
+
+		$('select[name=category]').each(function(){
+			$(this).find('option[value="<?php echo $category?>"]').prop('selected', true);
 		});
 
 		$('#rating_show').html(<?php echo $minimum_rating?> + ' - ' + <?php echo $maximum_rating?>);
@@ -93,13 +107,8 @@ echo "query: ".$sql;
 
 			}
     	});
-
-		$('input[type=radio][name=price]').each(function(){
-			if(this.value == <?php echo $price?>){
-				this.checked = true;
-			}
-		})
 		
+
 		$('button').click(function(){
 		
 			if("<?php echo $userid ?>" == "guest" && "<?php echo $username ?>" == "guest"){
@@ -129,33 +138,10 @@ echo "query: ".$sql;
 			}else if($(this).val() == 'viewCart'){
 				window.location = "shoppingCart.php";
 			}
-		})
+		});
+
 	});
 
-	function show(str) {
-		// if (str=="") {
-		//       document.getElementById("priceSort").innerHTML="";
-		//      return;} 
-
-		// if (window.XMLHttpRequest)
-		// 		{
-		// 			xmlhttp = new XMLHttpRequest();
-		// 		}
-		// 		else
-		// 		{
-		// 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		// 		}
-		// 		xmlhttp.onreadystatechange = function()
-		// 		{
-		// 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-		// 			{
-		// 				document.getElementById('priceSort').submit();
-		// 			}
-		// 		}
-		// 		xmlhttp.open("GET","productList.php?q="+str, true);
-		// 		xmlhttp.send();
-		document.getElementById("priceSort").submit();
-}
 </script>
 
 		<main> 
@@ -176,8 +162,8 @@ echo "query: ".$sql;
 							</li>
 							<li>
 								<div name="cate" class="custom-select" style="width:150px;">
-									<select name="category" onchange = "show(this.value)">
-									<option value = "">Category</option>
+									<select name="category">
+										<option value = "all">Category</option>
 										<?php 
 										$sql = mysqli_query($con, "SELECT cname FROM catagory");
 										while ($row = $sql->fetch_assoc()){
@@ -202,6 +188,8 @@ echo "query: ".$sql;
 										</figure>
 									</div>
 									<div class="productDes">
+										<h2><?php echo $results->data[$i]['category']; ?></h2>
+										<br>
 										<h2><?php echo $results->data[$i]['pname']; ?></h2>
 										<i class="fa" style="font-size:48px;color:red">
 											<?php echo $results->data[$i]['rating']; ?>

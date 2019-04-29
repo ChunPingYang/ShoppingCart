@@ -12,10 +12,7 @@ $query = "insert into cart(userid, pid, quantity, last_update_username, last_upd
 
 $result = mysqli_query($con,$query);
 
-if($result){
-    header('Location:productList.php');
-}
-else{
+if(!$result){
     die('Error: ' . mysqli_error($con));
 }
 
