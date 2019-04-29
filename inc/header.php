@@ -1,23 +1,10 @@
-<?php 
-	session_start();
 
-	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
-	//SELECT count(*) FROM `cart` WHERE userid = 2;
-	$result = mysqli_query($con,"select * from cart where userid = $userid;");
-	$num_cart = mysqli_num_rows($result);
-
-	$result = mysqli_query($con,"select * from users where userid = $userid;");
-	$admin = false;
-	while($userData = mysqli_fetch_array($result)){
-		$admin = $userData['admin'];
-	}
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
 
-<title>ShoppingCart</title>
+<title>AMZ</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -87,3 +74,21 @@
 
 		</div>
 	</header>
+	
+	<?php 
+	session_start();
+	$userid = "guest";
+	if(isset($_SESSION['userid'])){
+		$userid	= $_SESSION['userid'];
+		//SELECT count(*) FROM `cart` WHERE userid = 2;
+		$result = mysqli_query($con,"select * from cart where userid = $userid;");
+		$num_cart = mysqli_num_rows($result);
+
+		$result = mysqli_query($con,"select * from users where userid = $userid;");
+		$admin = false;
+		while($userData = mysqli_fetch_array($result)){
+			$admin = $userData['admin'];
+		}
+
+	}
+?>

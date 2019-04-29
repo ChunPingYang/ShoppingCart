@@ -1,12 +1,3 @@
-<?php 
-session_start();
-$con=mysqli_connect("localhost","root","","amz");
-$userid = $_SESSION['userid'];
-
-$sql = "SELECT * FROM `product` ORDER BY `product`.`release date` DESC";
-$result = mysqli_query($con,$sql);
-?>
-
 
 <!DOCTYPE html>
 <html>
@@ -58,6 +49,14 @@ $result = mysqli_query($con,$sql);
 			});
 		</script>
 		<!-- end of nav bar -->
+		<?php 
+session_start();
+$con=mysqli_connect("localhost","root","","amz");
+$userid = $_SESSION['userid'];
+
+$sql = "SELECT * FROM `product` ORDER BY `product`.`release date` DESC";
+$result = mysqli_query($con,$sql);
+?>
 
 
 		<!-- put your content here -->

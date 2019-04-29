@@ -7,6 +7,9 @@ if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 } 
 //echo "Connected successfully";
+if(isset($_POST['home'])){
+  header('Location:productList.php');
+}
 if(isset($_POST['update'])){
 
 
@@ -63,12 +66,15 @@ if(isset($_POST['search'])){
 <head>
 	<title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type = "text/css" href = "css/regi_style.css?version=2.0">
+<link rel="stylesheet" type = "text/css" href = "css/regi_style.css?version=1.0">
 <link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css"/>
+
 <script src="js/jquery-1.11.1.min.js"></script>
 
 </head>
+
 <script>
+
   $(document).ready(function(){
    $('button').click(function(){
      var temp = $(this)
@@ -117,8 +123,10 @@ if(isset($_POST['search'])){
       </div>
 
       <div class = "col">
+        <input type = "submit" value = "Home" name = "home">
         <input style = "height: 180px" type="text" id = "description" name="description" placeholder="Description">
         <input type="submit" value="Update" name="update">
+        
       </div>
      
     </div>
