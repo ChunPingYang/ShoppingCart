@@ -73,7 +73,9 @@ $result = mysqli_query($con,$sql);
 				</div>
                 <?php 
                 while ($row = $result-> fetch_assoc()){
-                    $img = $row['image'];
+					$rowid = $row['rowid'];
+					$pid = $row['pid'];
+					$img = $row['image'];
                     $name = $row['pname'];
                     $price = $row['price'];
                     $detail = $row['description'];
@@ -94,9 +96,12 @@ $result = mysqli_query($con,$sql);
 						</p>
 					</div>
 					<div class="product-price"><?php echo "$price";?></div>
-					<div class="product-quantity">
-						<input type="number" value=<?php echo "$quantity";?> min="1">
-					</div>
+					
+						<div class="product-quantity">
+							<input type="number" name ="quantity" id ="quantity" label =" <?php echo "$rowid";?>"
+							value=<?php echo "$quantity";?> min="1" >
+						</div>
+					
 					<div class="product-removal">
 						<button class="remove-product">
 							Remove
@@ -126,9 +131,31 @@ $result = mysqli_query($con,$sql);
 						<div class="totals-value" id="cart-total"></div>
 					</div>
 				</div>
-
-				<button class="checkout">Checkout</button>
-
+				<form action = "" method="post">
+				<input type="hidden" name="chaxun" value="1" />
+				<button class="checkout" >Checkout</button>
+				
+				</form>
+				<?php
+				if(!empty($_POST['chaxun'])){
+					$result = mysqli_query($con,$sql);
+					while ($row =$result->fetch_assoc() ){
+						
+					$rowid = $row['rowid'];
+					$pid = $row['pid'];
+						
+                    $price = $row['price'];
+					$quantity = $row['quantity'];	
+					$total = $price*$quantity;
+					$insert = "INSERT INTO `orders` (`orderid`, `itemid`, `userid`,
+					 `n_purchased`, `totalprice`, `orderdate`, `last_update_username`, `last_update_date`) values
+					(NULL,'$pid','$userid','$quantity','$total',CURRENT_TIMESTAMP, NULL, CURRENT_TIMESTAMP)";
+					mysqli_query($con,$insert);	
+					$delete = "DELETE FROM `CART` where `userid` = '$userid'";
+					mysqli_query($con,$delete);	
+					}
+				}
+					?>
 			</div>
 
 </body>
