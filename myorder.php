@@ -3,7 +3,7 @@ session_start();
 $con=mysqli_connect("localhost","root","","amz");
 $userid = $_SESSION['userid'];
 
-$sql = "SELECT * from product P,orders o where o.userid = '$userid' and P.itemid = o.itemid";
+$sql = "SELECT * from product P,orders o where o.userid = '$userid' and P.itemid = o.itemid order by `orderdate` DESC;";
 $result = mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>

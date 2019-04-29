@@ -1,3 +1,17 @@
+<?php 
+	session_start();
+
+	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
+	//SELECT count(*) FROM `cart` WHERE userid = 2;
+	$result = mysqli_query($con,"select * from cart where userid = $userid;");
+	$num_cart = mysqli_num_rows($result);
+
+	$result = mysqli_query($con,"select * from users where userid = $userid;");
+	$admin = false;
+	while($userData = mysqli_fetch_array($result)){
+		$admin = $userData['admin'];
+	}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -23,9 +37,17 @@
 <!-- //for-mobile-apps -->
 <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
-<link href="./css/style.css?version=1.0" rel='stylesheet' type='text/css' />
+<link href="./css/style.css?version=2.0" rel='stylesheet' type='text/css' />
 
+<script type="text/javascript">
+	$(document).ready(function(){
 
+		if(<?php echo $admin?> == false){
+			$("#admin").hide();
+		}
+
+	})
+</script>
 
 </head>
 
@@ -39,17 +61,22 @@
 
 				<div class="nav-top">
 					<nav class="navbar navbar-default">
-
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav ">
-							<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
-							<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
-							<li><a href="#" class="hyper"><span>New Games</span></a></li>
-						</ul>
-					</div>
+						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+							<ul class="nav navbar-nav ">
+								<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
+								<li><a href="./bestSellers.php" class="hyper"> <span>Best Sellers</span></a></li>
+								<li><a href="./newGames.php" class="hyper"><span>New Games</span></a></li>
+								<li><a id="admin" href="./admin.php" class="hyper"><span>Edit Product</span></a></li>
+							</ul>
+						</div>
 					</nav>
+					<div class="cart">
+						<a href="profile.php">
+							<img src="https://img.icons8.com/ios/30/000000/user.png">
+						</a>
+					</div>
 					<div class="cart" >
-						<a href="profile.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
+						<a href="shoppingCart.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>
 					</div>
 					<form align = "center" action="./productList.php" method="POST">
 						<font size = "5">Search:</font>
