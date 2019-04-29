@@ -13,7 +13,7 @@ if(!empty($id)){
 		$category = $row['category'];
 		$description = $row['description'];
 		$price = $row['price'];
-		$rl_date = $row['release date'];
+		$rl_date = $row['release_date'];
 		$href = $row['href'];
 		$image = $row['image'];
 		$s1 = $row['screenshots1'];
