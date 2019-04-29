@@ -110,7 +110,6 @@ echo "query: ".$sql;
 						alert("Success Add Item");
 					},
 					complete: function(){
-						console.log("......");
 						element.hide();
 						element.next().css("visibility", "visible");
 					},
