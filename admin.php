@@ -19,18 +19,13 @@ $release_date = date('Y-m-d', strtotime($_POST['release_date']));
 $image = mysqli_real_escape_string($con, $_POST['image']);
 $description = mysqli_real_escape_string($con, $_POST['description']);
 
-  if(!$pname||!$price||!$description){
-    header('Location:admin.php');
-    exit();
-  }
-
 
 $sql="INSERT INTO product (pname, price, rating, company, image, description, release_date) VALUES ('$pname', '$price','$rating', '$company', '$image', '$description', '$release_date')";
 if (!mysqli_query($con,$sql))
         {
         die('Error: ' . mysqli_error($con));
         }
-mysqli_query($con,"insert into catagory (cname) values $catagory");
+//mysqli_query($con,"insert into catagory (cname) values $catagory ");
 
 }
 ?>
@@ -70,8 +65,35 @@ if(isset($_POST['search'])){
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type = "text/css" href = "css/regi_style.css?version=2.0">
 <link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.11.1.min.js"></script>
 
 </head>
+<script>
+  $(document).ready(function(){
+   $('button').click(function(){
+     var temp = $(this)
+      $.ajax({
+					type: "POST",
+					url: "delete.php",
+					data:{pid:$(this).prev().val()},
+					dataType:"html",
+					success: function(data){
+            alert(data);
+						alert("Success delet Item");
+            console.log(temp.prev().val());
+					},
+					complete: function(){
+            //window.location = "admin.php";
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						alert(xhr.status);
+						alert(thrownError);
+					}
+				});
+    });
+  });
+
+  </script>
 <body>
 
 <div class="container">
