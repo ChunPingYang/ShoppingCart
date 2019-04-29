@@ -1,12 +1,11 @@
+<?php include_once 'connection.php';?>
 <?php include_once 'inc/header.php';?>
 <?php include_once 'inc/nav.php';?>
-<?php include_once 'connection.php';?>
 <?php include_once 'Paginator.class.php';?>
 <link href="./css/productList.sort.css?version3.0" rel='stylesheet' type='text/css' />
 <link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css" />
 
 <?php
-	session_start();
 
 	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
 	$username		= ( isset( $_SESSION['username'] ) ) ? $_SESSION['username'] : "guest";
@@ -99,14 +98,31 @@ echo "query: ".$sql;
 				window.location = "regipage.php";
 			}
 
-			var itemid = $(this).prev().val();
-			window.location = "shoppingCart.php?itemid="+itemid;
+			var element = $(this);
+
+			$.ajax({
+				type: "POST",
+				url: "addCart.php",
+				data:{pid:$(this).prev().val(),price:$(this).prev().prev().val()},
+				dataType:"html",
+				success: function(data){
+					alert("Success Add Item");
+				},
+				complete: function(){
+					console.log("......");
+					element.hide();
+					element.next().css("visibility", "visible");
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
 		})
-		
 	});
 </script>
 
-		<main class="card-container"> 
+		<main> 
 			<form id="priceSort" method="GET">
 				<input type="hidden" name="price" value="<?php echo $price?>"/>
 				<input type="hidden" name="minimum_rating" value="<?php echo $minimum_rating?>" />
@@ -149,8 +165,10 @@ echo "query: ".$sql;
 											</i>
 										</div>
 										<div class="column">
+											<input type="hidden" value="<?php echo $results->data[$i]['price'];?>" />
 											<input type="hidden" value="<?php echo $results->data[$i]['itemid'];?>" />
-											<button type="button" class="addCart" value="button<?php echo $i?>">Add to Cart</button>
+											<button type="button">Add to Cart</button>
+											<button style="visibility:hidden" type="button">View Cart</button>
 										</div>
 									</div>	
 							</article>
