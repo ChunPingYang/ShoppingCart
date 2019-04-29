@@ -33,7 +33,7 @@ CREATE TABLE `cart` (
   `userid` int(11) NOT NULL,
   `pid` int(11) DEFAULT NULL,
   `quantity` int(255) DEFAULT NULL,
-  `totalprice` float DEFAULT NULL,
+  
   `last_update_username` varchar(255) DEFAULT NULL,
   `last_update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
