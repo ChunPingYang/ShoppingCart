@@ -5,6 +5,12 @@
 	//SELECT count(*) FROM `cart` WHERE userid = 2;
 	$result = mysqli_query($con,"select * from cart where userid = $userid;");
 	$num_cart = mysqli_num_rows($result);
+
+	$result = mysqli_query($con,"select * from users where userid = $userid;");
+	$admin = false;
+	while($userData = mysqli_fetch_array($result)){
+		$admin = $userData['admin'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +39,15 @@
 <!-- Custom Theme files -->
 <link href="./css/style.css?version=1.0" rel='stylesheet' type='text/css' />
 
+<script type="text/javascript">
+	$(document).ready(function(){
 
+		if(<?php echo $admin?> == false){
+			$("#admin").hide();
+		}
+
+	})
+</script>
 
 </head>
 
@@ -47,14 +61,14 @@
 
 				<div class="nav-top">
 					<nav class="navbar navbar-default">
-
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav ">
-							<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
-							<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
-							<li><a href="./newGames.html" class="hyper"><span>New Games</span></a></li>
-						</ul>
-					</div>
+						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+							<ul class="nav navbar-nav ">
+								<li class="active"><a href="./productList.php" class="hyper "><span>Home</span></a></li>
+								<li><a href="./bestSellers.html" class="hyper"> <span>Best Sellers</span></a></li>
+								<li><a href="./newGames.html" class="hyper"><span>New Games</span></a></li>
+								<li><a id="admin" href="./admin.php" class="hyper"><span>Edit Product</span></a></li>
+							</ul>
+						</div>
 					</nav>
 					<div class="cart" >
 						<a href="shoppingCart.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>

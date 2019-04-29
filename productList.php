@@ -100,24 +100,28 @@ echo "query: ".$sql;
 
 			var element = $(this);
 
-			$.ajax({
-				type: "POST",
-				url: "addCart.php",
-				data:{pid:$(this).prev().val(),price:$(this).prev().prev().val()},
-				dataType:"html",
-				success: function(data){
-					alert("Success Add Item");
-				},
-				complete: function(){
-					console.log("......");
-					element.hide();
-					element.next().css("visibility", "visible");
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					alert(xhr.status);
-					alert(thrownError);
-				}
-			});
+			if($(this).val() == 'addCart'){
+				$.ajax({
+					type: "POST",
+					url: "addCart.php",
+					data:{pid:$(this).prev().val(),price:$(this).prev().prev().val()},
+					dataType:"html",
+					success: function(data){
+						alert("Success Add Item");
+					},
+					complete: function(){
+						console.log("......");
+						element.hide();
+						element.next().css("visibility", "visible");
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						alert(xhr.status);
+						alert(thrownError);
+					}
+				});
+			}else if($(this).val() == 'viewCart'){
+				window.location = "shoppingCart.php";
+			}
 		})
 	});
 </script>
@@ -167,8 +171,8 @@ echo "query: ".$sql;
 										<div class="column">
 											<input type="hidden" value="<?php echo $results->data[$i]['price'];?>" />
 											<input type="hidden" value="<?php echo $results->data[$i]['itemid'];?>" />
-											<button type="button">Add to Cart</button>
-											<button style="visibility:hidden" type="button">View Cart</button>
+											<button type="button" value="addCart">Add to Cart</button>
+											<button style="visibility:hidden" type="button" value="viewCart">View Cart</button>
 										</div>
 									</div>	
 							</article>
