@@ -57,7 +57,7 @@
 					</div>
 					</nav>
 					<div class="cart" >
-						<a href="profile.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>
+						<a href="shoppingCart.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>
 					</div>
 					<form align = "center" action="./productList.php" method="POST">
 						<font size = "5">Search:</font>

@@ -6,7 +6,6 @@
 <link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css" />
 
 <?php
-	session_start();
 
 	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
 	$username		= ( isset( $_SESSION['username'] ) ) ? $_SESSION['username'] : "guest";
@@ -99,6 +98,8 @@ echo "query: ".$sql;
 				window.location = "regipage.php";
 			}
 
+			var element = $(this);
+
 			$.ajax({
 				type: "POST",
 				url: "addCart.php",
@@ -108,7 +109,9 @@ echo "query: ".$sql;
 					alert("Success Add Item");
 				},
 				complete: function(){
-					
+					console.log("......");
+					element.hide();
+					element.next().css("visibility", "visible");
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
 					alert(xhr.status);
@@ -164,7 +167,8 @@ echo "query: ".$sql;
 										<div class="column">
 											<input type="hidden" value="<?php echo $results->data[$i]['price'];?>" />
 											<input type="hidden" value="<?php echo $results->data[$i]['itemid'];?>" />
-											<button type="button" class="addCart" value="button<?php echo $i?>">Add to Cart</button>
+											<button type="button">Add to Cart</button>
+											<button style="visibility:hidden" type="button">View Cart</button>
 										</div>
 									</div>	
 							</article>
