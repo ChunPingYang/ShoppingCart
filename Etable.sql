@@ -20,7 +20,7 @@ CREATE TABLE product
   itemid int NOT NULL AUTO_INCREMENT,
   `pname` varchar(255) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `price` float NOT NULL,
-  `release date` date NOT NULL,
+  `release_date` date NOT NULL,
   `href` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `company` varchar(30) NOT NULL,
