@@ -151,9 +151,9 @@ if(isset($_POST['search'])){
 											<a href = "p_details.php?q=<?php echo $results->data[$i]['itemid'];?>"> <img style="border-radius: 5px;"src=<?php echo $results->data[$i]['image'];?>/></a>
 										</figure>
 									</div>
-									<div class="productDes">
+									<div class="productDes" style="padding-left:12%">
 										<h3><?php echo $results->data[$i]['pname']; ?></h3>
-										<i style="font-size:36px;color:red">
+										<i style="font-size:27px;color:red">
 											<?php echo $results->data[$i]['rating']; ?>
 										</i>
 									</div>
@@ -161,9 +161,9 @@ if(isset($_POST['search'])){
 										<div class="column">
 											
 										</div>
-										<div class="column">
-											<i name="price" class="fa fa-dollar" style="font-size:48px;color:red">
-												<?php echo $results->data[$i]['price']; ?>
+										<div class="column" style="padding:10px">
+											<i name="price" class="fa fa-dollar" style="font-size:48px;color:black">
+												$ <?php echo $results->data[$i]['price']; ?>
 											</i>
 										</div>
 										<div class="column">
