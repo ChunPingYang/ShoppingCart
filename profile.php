@@ -2,6 +2,10 @@
                                 session_start();
                                     $con=mysqli_connect("localhost","root","","amz");
                                     //$_SESSION['userid']='1000';   //predefine for test;
+                                    if(!isset($_SESSION['userid'])){
+                                        header('Location:regipage.php');
+                                    }
+                                    
                                     $userid = $_SESSION['userid'];
                                     
                                     $sql = "SELECT * from users where userid='$userid'";

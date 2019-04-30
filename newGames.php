@@ -25,6 +25,40 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 </head>
+<script>
+$(document).ready(function(){
+	$('button').click(function(){
+		
+		if("<?php echo $userid ?>" == "guest" && "<?php echo $username ?>" == "guest"){
+			window.location = "regipage.php";
+		}
+
+		var element = $(this);
+
+		if($(this).val() == 'addCart'){
+			$.ajax({
+				type: "POST",
+				url: "addCart.php",
+				data:{pid:$(this).prev().val(),price:$(this).prev().prev().val()},
+				dataType:"html",
+				success: function(data){
+					alert("Success Add Item");
+				},
+				complete: function(){
+					element.hide();
+					element.next().css("visibility", "visible");
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}else if($(this).val() == 'viewCart'){
+			window.location = "shoppingCart.php";
+		}
+	});
+});
+	</script>
 
 <body>
 
@@ -50,13 +84,15 @@
 		</script>
 		<!-- end of nav bar -->
 		<?php 
-session_start();
-$con=mysqli_connect("localhost","root","","amz");
-$userid = $_SESSION['userid'];
-
-$sql = "SELECT * FROM `product` ORDER BY `product`.`release date` DESC";
-$result = mysqli_query($con,$sql);
-?>
+		session_start();
+		$con=mysqli_connect("localhost","root","","amz");
+		$userid = "guest";
+		if(isset($_SESSION['userid'])){
+			$userid = $_SESSION['userid'];
+		}	
+		$sql = "SELECT * FROM `product` ORDER BY `product`.`release_date` DESC";
+		$result = mysqli_query($con,$sql);
+		?>
 
 
 		<!-- put your content here -->
@@ -76,12 +112,13 @@ $result = mysqli_query($con,$sql);
                 8=>"product--pink",
             ];
             while ($row = $result-> fetch_assoc() and $i<8){
+				$id = $row['itemid'];
                 $img = $row['image'];
                 $name = $row['pname'];
                 $price = $row['price'];
                 $detail = $row['description'];
                 $detail = strtok($detail,",.");
-                $date = $row['release date'];
+                $date = $row['release_date'];
                 $i=$i+1;
                 
                 ?>
@@ -92,10 +129,13 @@ $result = mysqli_query($con,$sql);
                         
 						<p>Released <?php echo "$date"?> </p>
 						<p>Price <?php echo "$price";?></p>
-						<button>Add to cart</button>
+						<input type="hidden" value="<?php echo $price;?>" />
+						<input type="hidden" value="<?php echo $id;?>" />
+						<button type="button" value="addCart">Add to Cart</button>
+						<button style="visibility:hidden" type="button" value="viewCart">View Cart</button>					
 					</div>
 					<div class="product_overlay">
-						<h2>Added to cart</h2>
+					 	<h2>Added to cart</h2>
 					</div>
 				</div>
 				<?php } ?>  

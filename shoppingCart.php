@@ -1,6 +1,9 @@
 <?php 
 session_start();
 $con=mysqli_connect("localhost","root","","amz");
+if(!isset($_SESSION['userid'])){
+	header('Location:regipage.php');
+}
 $userid = $_SESSION['userid'];
 
 $sql = "SELECT * from product P,cart C where C.userid = '$userid' and P.itemid = C.pid";

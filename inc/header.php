@@ -1,4 +1,22 @@
+<?php
 
+	session_start();
+	$userid = "guest"; 
+	$admin = false;
+	if(isset($_SESSION['userid'])){
+		$userid	= $_SESSION['userid'];
+		//SELECT count(*) FROM `cart` WHERE userid = 2;
+		$result = mysqli_query($con,"select * from cart where userid = $userid;");
+		$num_cart = mysqli_num_rows($result);
+
+		$result = mysqli_query($con,"select * from users where userid = $userid;");
+		$admin = false;
+		while($userData = mysqli_fetch_array($result)){
+			$admin = $userData['admin'];
+		}
+
+	}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -28,11 +46,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-
-		if(<?php echo $admin?> == false){
+		if(<?php echo $admin;?> == false ||"<?php echo $userid;?>" == "guest"){
 			$("#admin").hide();
 		}
-
 	})
 </script>
 
@@ -75,20 +91,4 @@
 		</div>
 	</header>
 	
-	<?php 
-	session_start();
-	$userid = "guest";
-	if(isset($_SESSION['userid'])){
-		$userid	= $_SESSION['userid'];
-		//SELECT count(*) FROM `cart` WHERE userid = 2;
-		$result = mysqli_query($con,"select * from cart where userid = $userid;");
-		$num_cart = mysqli_num_rows($result);
-
-		$result = mysqli_query($con,"select * from users where userid = $userid;");
-		$admin = false;
-		while($userData = mysqli_fetch_array($result)){
-			$admin = $userData['admin'];
-		}
-
-	}
-?>
+	

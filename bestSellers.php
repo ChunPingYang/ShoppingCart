@@ -47,15 +47,17 @@
 			});
 		</script>
 		<!-- end of nav bar -->
-        <?php 
-session_start();
-$con=mysqli_connect("localhost","root","","amz");
-$userid = $_SESSION['userid'];
-
-$sql = "SELECT * FROM `product` ORDER BY `product`.`rating` DESC";
-$result = mysqli_query($con,$sql);
-?>
-
+		<?php 
+		session_start();
+		$con=mysqli_connect("localhost","root","","amz");
+		$userid = "guest";
+		if(isset($_SESSION['userid'])){
+			$userid = $_SESSION['userid'];
+		}
+		$sql = "SELECT * FROM `product` ORDER BY `product`.`rating` DESC";
+		$result = mysqli_query($con,$sql);
+		
+		?>
 
 		<!-- put your content here -->
 		<div class="col-sm-8" style="border:1 px solid black">
