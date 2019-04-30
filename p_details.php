@@ -1,6 +1,11 @@
 <?php
 include_once 'connection.php';
 $id = $_GET['q'];
+session_start();
+if(isset($_SESSION['userid'])){
+	
+
+}
 
 if(!empty($id)){
 	$sql = "select * from product where itemid = '".$id."' ";
@@ -78,7 +83,7 @@ if(!empty($id)){
 
 		<div class="col-sm-8" style="border:1 px solid black">
 			<h1><?php echo $name;?></h1>
-			<cite>by <?php echo $company;?></cite>
+			<cite style="font-size: 15px">by <?php echo $company;?></cite>
 			<style>
 				* {
 					box-sizing: border-box;
@@ -88,7 +93,7 @@ if(!empty($id)){
 				.column {
 					float: left;
 					padding: 10px;
-					height: 300px;
+					height: auto;
 					/* Should be removed. Only for demonstration */
 				}
 
@@ -98,7 +103,7 @@ if(!empty($id)){
 				}
 
 				.middle {
-					width: 40%;
+					width: 30%;
 				}
 
 				/* Clear floats after the columns */
@@ -113,27 +118,32 @@ if(!empty($id)){
 					<h2><img src=<?php echo $image;?> alt="picture"></h2>
 					<p></p>
 				</div>
-				<div class="right">
-					<h2>Price: <?php echo $price;?></h2>
-					<p><img src="imgs/buy-now-flashing.gif" alt="buy now" width="200"></p>
+				<div class="column right" style = "padding-left:40%">
+					<h2>Price: $<?php echo $price;?></h2>
+					<form method = "post">
+					<button type="button" value="addCart" name = "addcart"><img src="imgs/buy-now-flashing.gif" alt="buy now" width="200"></button>
+					</form>
 				</div>
 			</div>
-			<div class="column middle">
-					<h2>Key Features:</h2>
-					<p>
-						<ul>
+			<div class = "row">
+				<div class="column middle">
+					<h3>Key Features:</h3>
+					<p style="font-size: 15px">
+						<ul style="font-size: 15px">
 							<li> Release Date:<?php echo $rl_date;?></li>
 							<li> <?php echo $category;?> game</li>
 							<li> Rating:<?php echo $rating;?></li>
 						</ul>
-					</p>
-
-			</div>
-			<h2>Product details</h2>
-			<p style="font-size: 20px"><?php echo $description;?></p>
+					</p>					
+			 </div>
+			 <h2>Product details</h2>
+			        <p style="font-size: 15px"><?php echo $description;?>.</p>
 			<img class = "middle" src=<?php echo $s1;?>>
 			<img class = "middle" src=<?php echo $s2;?>>
 			<img class = "middle" src=<?php echo $s3;?>>
+
+			</div>
+			
 		</div>
 
 	</div>
