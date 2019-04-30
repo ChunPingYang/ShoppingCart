@@ -81,9 +81,8 @@
 						<a href="shoppingCart.php" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo $num_cart?></span></a>
 					</div>
 					<form align = "center" action="./productList.php" method="POST">
-						<font size = "5">Search:</font>
-						<input type = "text" value = "" name="search"/>
-						<input type = "submit" style="color:white; background-color: rgb(255, 165, 30); border-radius: 5px;" value = "submit"/>
+						<input type = "text" value = "" name="search" />
+						<input type = "submit" style="color:white; background-color: rgb(255, 165, 30); border-radius: 5px;" value = "Search"/>
 					</form>
 				</div>
 
