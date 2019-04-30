@@ -54,7 +54,7 @@
 		if(isset($_SESSION['userid'])){
 			$userid = $_SESSION['userid'];
 		}
-		$sql = "SELECT * FROM `product` ORDER BY `product`.`itemid` ASC";
+		$sql = "SELECT * FROM `product` ORDER BY `product`.`rating` DESC";
 		$result = mysqli_query($con,$sql);
 		
 		?>
