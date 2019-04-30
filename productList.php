@@ -112,6 +112,7 @@ if($option == 1){
 		
 			if("<?php echo $userid ?>" == "guest" && "<?php echo $username ?>" == "guest"){
 				window.location = "regipage.php";
+				return;
 			}
 
 			var element = $(this);
