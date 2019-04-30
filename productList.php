@@ -9,7 +9,7 @@
 
 	$userid			= ( isset( $_SESSION['userid'] ) ) ? $_SESSION['userid'] : "guest";
 	$username		= ( isset( $_SESSION['username'] ) ) ? $_SESSION['username'] : "guest";
-	$price			= ( isset( $_GET['price'] ) ) ? $_GET['price'] : "all";
+	$price			= ( isset( $_GET['price'] ) ) ? $_GET['price'] : -1;
 	$category     	= ( isset( $_GET['category'] ) ) ? $_GET['category'] : "all";
 	$option     	= ( isset( $_GET['option'] ) ) ? $_GET['option'] : 1;
 	$limit      	= ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 10;
@@ -26,7 +26,9 @@ if(isset($_POST['search'])){
 
 }else{
 //10x+11 10x+20
+
 	if($price == 0){
+		echo "enter price = 0";
 		$sql .= " AND price <= 20";
 	}
 

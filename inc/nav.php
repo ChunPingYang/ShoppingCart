@@ -8,7 +8,7 @@ $maximum_rating = ( isset( $_GET['maximum_rating'] ) ) ? $_GET['maximum_rating']
         <form id="navForm" action="./productList.php" method="GET">
             <div>
                 <h3>Filter by Price</h3>
-                <input type="radio" name="price" value="all">All<br>
+                <input type="radio" name="price" value="-1">All<br>
                 <input type="radio" name="price" value="0">&lt= 20<br>
                 <input type="radio" name="price" value="1">21~30<br>
                 <input type="radio" name="price" value="2">31~40<br> 
