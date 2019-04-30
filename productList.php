@@ -26,10 +26,9 @@ if(isset($_POST['search'])){
 
 }else{
 //10x+11 10x+20
-
 	if($price == 0){
-		echo "enter price = 0";
 		$sql .= " AND price <= 20";
+		
 	}
 
 	for($i=1;$i<=3;$i++){
