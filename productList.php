@@ -19,7 +19,7 @@
 	$maximum_rating = ( isset( $_GET['maximum_rating'] ) ) ? $_GET['maximum_rating'] : 99; //TODO SQL Type to Integer
 	
 $sql = "SELECT * FROM product WHERE display = 1";
-if(isset($_POST['search'])){
+if(isset($_POST['search'])){ 
 
 	$keyword = trim($_POST['search']);
 	$sql .= " AND pname like '%$keyword%'";
