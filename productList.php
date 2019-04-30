@@ -2,8 +2,8 @@
 <?php include_once 'inc/header.php';?>
 <?php include_once 'inc/nav.php';?>
 <?php include_once 'Paginator.class.php';?>
-<link href="./css/productList.sort.css?version2.0" rel='stylesheet' type='text/css' />
-<link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css" />
+<link href="./css/productList.sort.css?version=3.0" rel='stylesheet' type='text/css' />
+<link href="./css/productList.css?version=1.0" rel="stylesheet" type="text/css" />
 
 <?php
 
@@ -57,9 +57,6 @@ if($option == 1){
 	$sql .= " ORDER BY price DESC";
 }
 
-
-
-echo "query: ".$sql;
  $Paginator = new Paginator($con,$sql);
  $num_rows = $Paginator->getResult();
  $results = false;
@@ -187,11 +184,11 @@ echo "query: ".$sql;
 											<a href = "p_details.php?q=<?php echo $results->data[$i]['itemid'];?>"> <img style="border-radius: 5px;"src=<?php echo $results->data[$i]['image'];?>/></a>
 										</figure>
 									</div>
-									<div class="productDes">
-										<h2><?php echo $results->data[$i]['category']; ?></h2>
+									<div class="productDes" style = "padding-left:30%">
+										<h4><?php echo $results->data[$i]['category']; ?></h4>
 										<br>
-										<h2><?php echo $results->data[$i]['pname']; ?></h2>
-										<i class="fa" style="font-size:48px;color:red">
+										<h3><?php echo $results->data[$i]['pname']; ?></h3>
+										<i class="fa" style="font-size:20px;color:rgb(255, 165, 30)">
 											<?php echo $results->data[$i]['rating']; ?>
 										</i>
 									</div>
@@ -200,7 +197,7 @@ echo "query: ".$sql;
 											
 										</div>
 										<div class="column">
-											<i name="price" class="fa fa-dollar" style="font-size:48px;color:red">
+											<i name="price" class="fa fa-dollar" style="font-size:40px;color:#405622">
 												<?php echo $results->data[$i]['price']; ?>
 											</i>
 										</div>
