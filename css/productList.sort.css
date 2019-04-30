@@ -9,7 +9,7 @@
 }
 
 .select-selected {
-    background-color: DodgerBlue;
+    background-color: rgb(255, 165, 30);
     border-radius: 15px;
 }
 
@@ -44,7 +44,7 @@
   /*style items (options):*/
   .select-items {
     position: absolute;
-    background-color: DodgerBlue;
+    background-color: rgb(255, 165, 30);
     top: 100%;
     left: 0;
     right: 0;

@@ -41,7 +41,7 @@
 <!-- //for-mobile-apps -->
 <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
-<link href="./css/style.css?version=2.0" rel='stylesheet' type='text/css' />
+<link href="./css/style.css?version=1.0" rel='stylesheet' type='text/css' />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -83,7 +83,7 @@
 					<form align = "center" action="./productList.php" method="POST">
 						<font size = "5">Search:</font>
 						<input type = "text" value = "" name="search"/>
-						<input type = "submit" value = "submit"/>
+						<input type = "submit" style="color:white; background-color: rgb(255, 165, 30); border-radius: 5px;" value = "submit"/>
 					</form>
 				</div>
 

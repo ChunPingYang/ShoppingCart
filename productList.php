@@ -2,7 +2,7 @@
 <?php include_once 'inc/header.php';?>
 <?php include_once 'inc/nav.php';?>
 <?php include_once 'Paginator.class.php';?>
-<link href="./css/productList.sort.css?version3.0" rel='stylesheet' type='text/css' />
+<link href="./css/productList.sort.css?version2.0" rel='stylesheet' type='text/css' />
 <link href="./css/productList.css?version=2.0" rel="stylesheet" type="text/css" />
 
 <?php
