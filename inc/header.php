@@ -2,15 +2,14 @@
 
 	session_start();
 	$userid = "guest"; 
-	$admin = false;
+	$admin = 0; //if not admin = 0, otherwise admin = 1;
 	if(isset($_SESSION['userid'])){
 		$userid	= $_SESSION['userid'];
 		//SELECT count(*) FROM `cart` WHERE userid = 2;
 		$result = mysqli_query($con,"select * from cart where userid = $userid;");
 		$num_cart = mysqli_num_rows($result);
 
-		$result = mysqli_query($con,"select * from users where userid = $userid;");
-		$admin = false;
+		$result = mysqli_query($con,"select * from users where userid = $userid and admin = TRUE;");
 		while($userData = mysqli_fetch_array($result)){
 			$admin = $userData['admin'];
 		}
@@ -46,7 +45,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		if(<?php echo $admin;?> == false ||"<?php echo $userid;?>" == "guest"){
+		if(<?php echo $admin ?> == 0 || "<?php echo $userid;?>" == "guest"){
 			$("#admin").hide();
 		}
 	})
