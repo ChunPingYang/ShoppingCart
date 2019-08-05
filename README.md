@@ -1,3 +1,4 @@
+![alt text](https://github.com/ChunPingYang/ShoppingCart/blob/master/imgs/Picture.jpg)
 
 ## Web structure:
 ```
